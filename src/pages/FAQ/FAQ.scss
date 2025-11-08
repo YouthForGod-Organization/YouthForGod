@@ -3,6 +3,7 @@
 $ink: #1a1a1a;
 $ink-weak: #505050;
 $accent: #d4af37;
+$hero-bg: #f6f4ef;
 
 .faq {
   background: #ffffff;
@@ -11,16 +12,17 @@ $accent: #d4af37;
 
 .faq__hero {
   text-align: center;
-  padding: clamp(72px, 12vw, 140px) clamp(20px, 6vw, 60px) clamp(24px, 6vw, 60px);
-  background: linear-gradient(135deg, #fff8e3, #f6ead9);
+  padding: clamp(64px, 12vw, 140px) clamp(20px, 6vw, 60px);
+  background: $hero-bg;
+  color: $ink;
 }
 
 .faq__eyebrow {
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.45em;
+  letter-spacing: 0.4em;
   font-size: 0.78rem;
-  color: $ink-weak;
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .faq__hero h1 {
