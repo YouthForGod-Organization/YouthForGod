@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./HomePage.scss";
 
 const VIDEO_POSTER =
@@ -20,9 +21,9 @@ export function HomePage() {
             </p>
             <p className="home__date">May 29 – 30, 2026 · Sacramento, California</p>
             <div className="home__hero-actions">
-              <a className="btn btn--primary" href="#register">
+              <Link className="btn btn--primary" to="/register">
                 Register Now
-              </a>
+              </Link>
             </div>
           </div> */}
         </div>
@@ -64,6 +65,9 @@ export function HomePage() {
               Limited seats remain. Early bird rate closes March 1. Scholarships
               available for group registrations.
             </p>
+            <Link className="btn btn--full" to="/register">
+              Register Now
+            </Link>
             <a className="btn btn--full" href="mailto:hello@youthforgod.org">
               Contact the Team
             </a>

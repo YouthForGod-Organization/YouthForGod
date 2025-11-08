@@ -1,0 +1,133 @@
+@use "../../styles/variables" as *;
+
+.registration {
+  background: var(--color-light-gray);
+
+  &__hero {
+    padding: clamp(72px, 12vw, 140px) clamp(20px, 6vw, 60px) clamp(24px, 6vw, 60px);
+    color: var(--color-primary-black);
+    text-align: center;
+    background: linear-gradient(135deg, #fff8e3, #f6ead9);
+  }
+
+  &__hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 2vw, 24px);
+    max-width: 760px;
+  }
+
+  &__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  &__lead {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.7;
+    margin: 0;
+    color: rgba(46, 46, 46, 0.85);
+  }
+
+  &__highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: clamp(16px, 3vw, 28px);
+    width: 100%;
+    margin-top: clamp(20px, 3vw, 32px);
+  }
+
+  &__highlight {
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    box-shadow: 0 18px 45px rgba(26, 26, 26, 0.08);
+  }
+
+  &__highlight-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.65;
+    margin-bottom: 8px;
+  }
+
+  &__highlight-value {
+    font-family: $font-heading;
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    font-weight: 600;
+    color: var(--color-primary-black);
+  }
+
+  &__form {
+    padding: clamp(48px, 8vw, 80px) 0;
+  }
+
+  &__frame-wrapper {
+    border-radius: 20px;
+    background: var(--color-pure-white);
+    box-shadow: 0 35px 60px rgba(26, 26, 26, 0.15);
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    min-height: clamp(640px, 90vh, 920px);
+    border: none;
+    display: block;
+  }
+
+  &__form-note {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: rgba(51, 51, 51, 0.8);
+    text-align: center;
+  }
+
+  &__info {
+    padding: clamp(56px, 10vw, 96px) 0 clamp(64px, 12vw, 120px);
+  }
+
+  &__info-grid {
+    display: grid;
+    gap: clamp(24px, 4vw, 32px);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  &__info-card {
+    background: var(--color-pure-white);
+    border-radius: var(--radius-base);
+    padding: clamp(24px, 4vw, 32px);
+    box-shadow: 0 24px 48px rgba(26, 26, 26, 0.08);
+
+    h2 {
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin: 0;
+      color: rgba(46, 46, 46, 0.8);
+      line-height: 1.6;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .registration {
+    &__hero {
+      padding-top: clamp(96px, 20vw, 160px);
+    }
+
+    &__frame-wrapper {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+}
+

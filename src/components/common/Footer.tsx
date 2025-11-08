@@ -3,10 +3,10 @@ import logo from "../../assets/logo.png";
 import "./Footer.scss";
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Speakers", href: "#speakers" },
-  { label: "Schedule", href: "#schedule" },
-  { label: "Register", href: "#register" },
+  { label: "Home", to: "/" },
+  { label: "Speakers", to: "/speakers" },
+  { label: "Schedule", to: "/schedule" },
+  { label: "Register", to: "/register" },
 ];
 
 const contactDetails = [
@@ -55,7 +55,7 @@ export function Footer() {
           <ul>
             {quickLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href}>{link.label}</a>
+                <Link to={link.to}>{link.label}</Link>
               </li>
             ))}
           </ul>

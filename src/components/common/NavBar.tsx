@@ -49,9 +49,9 @@ export function NavBar() {
               {link.label}
             </NavLink>
           ))}
-          <a className="nav__cta" href="mailto:hello@youthforgod.org" onClick={closeMenu}>
+          <Link className="nav__cta" to="/register" onClick={closeMenu}>
             Register
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

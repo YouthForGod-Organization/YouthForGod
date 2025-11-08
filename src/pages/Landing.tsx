@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import hero from "../assets/backgroundV1.png";
@@ -21,9 +22,9 @@ export function Landing() {
           }}
         >
           <div className="yfg-container yfg-hero__inner">
-            <a className="yfg-btn yfg-btn--primary" href="#register">
+            <Link className="yfg-btn yfg-btn--primary" to="/register">
               Register Now
-            </a>
+            </Link>
           </div>
         </section>
 
