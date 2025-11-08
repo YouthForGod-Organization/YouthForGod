@@ -43,7 +43,7 @@ const speakers = [
     title: "Professor of Theology",
     organization: "Veritas Seminary",
     image:
-      "https://images.unsplash.com/photo-1524504388940-4735a5a3c1b8?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -56,8 +56,8 @@ export function SpeakersPage() {
           <p className="speakers__eyebrow">Meet the voices</p>
           <h1>Speakers & Guides</h1>
           <p className="speakers__lead">
-            Pastors, practitioners, and creatives committed to equipping the next generation with
-            gospel clarity and Spirit-led boldness.
+            Pastors, practitioners, and creatives committed to equipping the
+            next generation with gospel clarity and Spirit-led boldness.
           </p>
         </section>
 

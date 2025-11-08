@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo2.png";
 import "./Footer.scss";
 
 const quickLinks = [
@@ -29,7 +29,7 @@ export function Footer() {
       <div className="container footer__grid">
         <div className="footer__brand">
           <Link to="/" aria-label="Youth for God home">
-            <img src={logo} alt="Youth for God" />
+            <img className="footer__logo" src={logo} alt="Youth for God" />
           </Link>
           <p>
             Youth for God Conference exists to elevate Christ alone and equip
@@ -79,7 +79,9 @@ export function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <p>© {year} Youth for God Conference. All rights reserved.</p>
+        <p>
+          © <span className="footer__year">{year}</span> Youth for God Conference. All rights reserved.
+        </p>
         <div className="footer__legal">
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
