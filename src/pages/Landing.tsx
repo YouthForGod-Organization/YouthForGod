@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import hero from "../assets/backgroundV1.png";
+import hero from "../assets/emptyBackground.png";
 import promoVideo from "../assets/yfg_promo_placeholder.mp4";
 import "./Landing.scss";
 
@@ -17,11 +17,14 @@ export function Landing() {
           role="region"
           aria-label="Solus Christus banner"
           style={{
-            backgroundImage: `
-              url(${hero})`,
+            backgroundImage: `url(${hero})`,
           }}
         >
           <div className="yfg-container yfg-hero__inner">
+            <div className="yfg-hero__copy">
+              <h1 className="yfg-hero__title">Solus Christus</h1>
+              <p className="yfg-hero__season">In Christ Alone</p>
+            </div>
             <Link className="yfg-btn yfg-btn--primary" to="/register">
               Register Now
             </Link>

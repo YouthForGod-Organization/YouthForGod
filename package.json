@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "playwright test",
+    "test:e2e": "playwright test",
     "start": "webpack serve --mode development",
+    "start:test": "webpack serve --mode development --port 4173 --host 127.0.0.1",
+    "preview:test": "npm run build && npx serve -s dist -l 4173",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -17,6 +20,7 @@
     "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@types/react-router-dom": "^5.3.3",
@@ -24,6 +28,7 @@
     "html-webpack-plugin": "^5.6.4",
     "sass": "^1.93.3",
     "sass-loader": "^16.0.6",
+    "serve": "^14.2.5",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",

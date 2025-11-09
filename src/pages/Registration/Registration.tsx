@@ -28,19 +28,17 @@ export function RegistrationPage() {
       <Header />
       <main className="registration">
         <section className="registration__hero">
-          <div className="container registration__hero-inner">
-            <p className="registration__eyebrow">Youth for God Conference 2026</p>
-            <h1>Secure Your Spot</h1>
-   
-            <div className="registration__highlights">
-              {eventHighlights.map((item) => (
-                <div key={item.label} className="registration__highlight">
-                  <span className="registration__highlight-label">{item.label}</span>
-                  <span className="registration__highlight-value">{item.value}</span>
-                </div>
-              ))}
-            </div>
+          <p className="registration__eyebrow">Youth for God Conference 2026</p>
+          <h1>Secure Your Spot</h1>
+          <div className="registration__highlights">
+            {eventHighlights.map((item) => (
+              <div key={item.label} className="registration__highlight">
+                <span className="registration__highlight-label">{item.label}</span>
+                <span className="registration__highlight-value">{item.value}</span>
+              </div>
+            ))}
           </div>
+
         </section>
 
         <section className="registration__form">
@@ -66,4 +64,3 @@ export function RegistrationPage() {
 }
 
 export default RegistrationPage;
-
