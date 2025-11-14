@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import hero from "../assets/solus-christus-bg.png";
+import backgroundImage from "../assets/solus-christus-bg.png";
 import promoVideo from "../assets/yfg_promo_placeholder.mp4";
 import "./Landing.scss";
 
@@ -10,15 +10,15 @@ export function Landing() {
     <>
       <Header />
 
-      <main>
+      <main
+        className="landing-page"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
         <section
           id="home"
           className="yfg-hero"
           role="region"
           aria-label="Solus Christus banner"
-          style={{
-            backgroundImage: `url(${hero})`,
-          }}
         >
           <div className="yfg-container yfg-hero__inner">
             <div className="yfg-hero__copy">
@@ -31,17 +31,13 @@ export function Landing() {
           </div>
         </section>
 
-        <section
-          id="promo"
-          className="yfg-video-section"
-          aria-label="Promo video"
-        >
+        <section id="promo" className="yfg-video-section" aria-label="Promo video">
           <div className="yfg-container">
             <div className="yfg-video-card">
               <video
                 className="yfg-video-card__media"
                 controls
-                poster={hero}
+                poster={backgroundImage}
                 aria-label="Youth for God promo video"
               >
                 <source src={promoVideo} type="video/mp4" />
