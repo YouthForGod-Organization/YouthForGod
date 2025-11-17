@@ -55,10 +55,9 @@ export function Landing() {
           <div className="yfg-container">
             <h2 className="yfg-h2">Mission Statement</h2>
             <p className="yfg-lead">
-              Youth for God Conference exists to call students, leaders, and
-              families to the glory of Christ alone—lifting high the gospel,
-              equipping the church, and inviting the next generation to live as
-              ambassadors of reconciliation.
+              Youth for God Conference exists to equip and exhort the next
+              generation to live as ambassadors of Jesus Christ, so that God may
+              ultimately be glorified.
             </p>
             <figure className="yfg-scripture">
               <blockquote>

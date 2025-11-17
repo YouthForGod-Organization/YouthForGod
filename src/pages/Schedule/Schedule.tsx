@@ -28,10 +28,10 @@ export function SchedulePage() {
       <main className="schedule">
         <section className="schedule__hero">
           <p className="schedule__eyebrow">May 29 – 30 · Sacramento</p>
-          <h1>Schedule & Flow</h1>
+          <h1>Schedule</h1>
           <p className="schedule__lead">
-            Every block is crafted to move students from inspiration to activation—anchored in
-            Scripture, honest Q&A, and hands-on labs.
+            The schedule is crafted so that all participants can have a balanced
+            experience of Teaching, Worship, and Fellowship.
           </p>
         </section>
 

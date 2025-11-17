@@ -1,8 +1,9 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import benImage from "../../assets/benCropped.webp";
-import neymanImage from "../../assets/neyman.webp";
+import neymanImage from "../../assets/neymanCropped.webp";
 import romanImage from "../../assets/roman.webp";
+import danielImage from "../../assets/DanielClark_Bio.webp";
 import "./Speakers.scss";
 
 const speakers = [
@@ -15,7 +16,7 @@ const speakers = [
   {
     name: "Konstantin Neyman",
     title: "Pastor",
-    organization: "Hazel Dell Baptist Church",
+    organization: "Word of Truth",
     image: neymanImage,
   },
   {
@@ -23,6 +24,12 @@ const speakers = [
     title: "Youth Pastor",
     organization: "Bible Baptist Church",
     image: romanImage,
+  },
+  {
+    name: "Daniel Clark",
+    title: "Pastor",
+    organization: "Evengalical Bible Fellowship",
+    image: danielImage,
   },
 ];
 
@@ -33,10 +40,10 @@ export function SpeakersPage() {
       <main className="speakers">
         <section className="speakers__hero">
           <p className="speakers__eyebrow">Meet the voices</p>
-          <h1>Speakers & Guides</h1>
+          <h1>Speakers</h1>
           <p className="speakers__lead">
-            Pastors, practitioners, and creatives committed to equipping the
-            next generation with gospel clarity and Spirit-led boldness.
+            Pastors, Teachers, and Sheperds committed to equipping the next
+            generation with gospel clarity.
           </p>
         </section>
 

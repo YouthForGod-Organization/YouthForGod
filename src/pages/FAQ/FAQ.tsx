@@ -37,8 +37,8 @@ const faqs = [
 
 const helpLinks = [
   { label: "Email Support", href: "mailto:hello@youthforgod.org" },
-  { label: "Event Guide", href: "/guide.pdf" },
-  { label: "Volunteer Form", href: "https://forms.gle/example" },
+  // { label: "Event Guide", href: "/guide.pdf" },
+  // { label: "Volunteer Form", href: "https://forms.gle/example" },
 ];
 
 export function FAQPage() {
@@ -50,8 +50,8 @@ export function FAQPage() {
           <p className="faq__eyebrow">Ask anything</p>
           <h1>Frequently Asked Questions</h1>
           <p className="faq__lead">
-            We want you to arrive confident and prepared. Browse the top questions or reach out to
-            our team directly.
+            We want you to arrive confident and prepared. Browse the top
+            questions or reach out to our team directly.
           </p>
         </section>
 
@@ -69,8 +69,8 @@ export function FAQPage() {
         <section className="faq__help">
           <h2>Need more help?</h2>
           <p>
-            Our team replies within 24 hours. For urgent needs during the event weekend, call the
-            onsite hotline listed in your confirmation email.
+            Our team replies within 24 hours. For urgent needs during the event
+            weekend, call the onsite hotline listed in your confirmation email.
           </p>
           <div className="faq__help-links">
             {helpLinks.map((link) => (
