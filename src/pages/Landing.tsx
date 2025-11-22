@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import hero from "../assets/backgroundImage2.png";
-import promoVideo from "../assets/promoVid1.mp4";
+import promoVideo from "../assets/backgroundImage2.png";
 import updatedLogo2 from "../assets/updatedLogo2.png";
 import "./Landing.scss";
 
