@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/updatedLogo2.png";
 import "./Footer.scss";
 
 const quickLinks = [
@@ -10,20 +10,15 @@ const quickLinks = [
 ];
 
 const contactDetails = [
-  { label: "Email", value: "hello@youthforgod.org", href: "mailto:hello@youthforgod.org" },
-  { label: "Phone", value: "(916) 555-2041", href: "tel:+19165552041" },
+  {
+    label: "Email",
+    value: "contact@youth4god.org",
+    href: "mailto:contact@youth4god.org",
+  },
   { label: "Location", value: "Sacramento, CA" },
 ];
 
-const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
-  { label: "Spotify", href: "https://spotify.com" },
-];
-
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="footer">
       <div className="container footer__grid">
@@ -36,18 +31,6 @@ export function Footer() {
             the next generation of disciple-makers through gospel-saturated
             teaching, worship, and community.
           </p>
-          <div className="footer__social">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
         </div>
 
         <div className="footer__links">
@@ -79,13 +62,9 @@ export function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <p>
-          © <span className="footer__year">{year}</span> Youth for God Conference. All rights reserved.
+        <p className="footer__copy">
+          © 2025 Youth for God Conference. All rights reserved.
         </p>
-        <div className="footer__legal">
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
-        </div>
       </div>
     </footer>
   );

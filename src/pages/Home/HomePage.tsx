@@ -68,7 +68,7 @@ export function HomePage() {
             <Link className="btn btn--full" to="/register">
               Register Now
             </Link>
-            <a className="btn btn--full" href="mailto:hello@youthforgod.org">
+            <a className="btn btn--full" href="mailto:contact@youth4god.org">
               Contact the Team
             </a>
           </article>

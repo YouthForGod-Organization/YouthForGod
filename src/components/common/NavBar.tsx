@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/updatedLogo2.png";
 import "./NavBar.scss";
 
 const navLinks = [
@@ -41,7 +41,9 @@ export function NavBar() {
               key={link.label}
               to={link.to}
               className={({ isActive }) =>
-                isActive ? "nav__menu-link nav__menu-link--active" : "nav__menu-link"
+                isActive
+                  ? "nav__menu-link nav__menu-link--active"
+                  : "nav__menu-link"
               }
               onClick={closeMenu}
               end={link.end}

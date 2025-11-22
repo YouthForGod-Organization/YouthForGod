@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import hero from "../assets/solus-christus-bg.png";
-import promoVideo from "../assets/yfg_promo_placeholder.mp4";
+import hero from "../assets/backgroundImage2.png";
+import promoVideo from "../assets/promoVid1.mp4";
+import updatedLogo2 from "../assets/updatedLogo2.png";
 import "./Landing.scss";
 
 export function Landing() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   return (
     <>
       <Header />
@@ -38,11 +42,24 @@ export function Landing() {
         >
           <div className="yfg-container">
             <div className="yfg-video-card">
+              <div
+                className={`yfg-video-card__overlay ${
+                  isVideoPlaying ? "yfg-video-card__overlay--hidden" : ""
+                }`}
+              >
+                <img
+                  className="yfg-video-card__overlay-logo"
+                  src={updatedLogo2}
+                  alt="Youth for God"
+                />
+                <p className="yfg-video-card__overlay-text">SOLUS CHRISTUS</p>
+              </div>
               <video
                 className="yfg-video-card__media"
                 controls
-                poster={hero}
+                // poster={hero}
                 aria-label="Youth for God promo video"
+                onPlay={() => setIsVideoPlaying(true)}
               >
                 <source src={promoVideo} type="video/mp4" />
                 Your browser does not support the video tag.

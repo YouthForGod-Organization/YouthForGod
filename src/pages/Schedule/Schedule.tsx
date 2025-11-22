@@ -2,24 +2,29 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./Schedule.scss";
 
-const conferenceSchedule = [
-  {
-    day: "Friday",
+const conferenceSchedule = {
+  friday: {
+    label: "Friday",
+    date: "May 23",
     slots: [
-      { time: "8:00 AM", activity: "Registration" },
-      { time: "10:00 AM", activity: "Session" },
-      { time: "1:00 PM", activity: "Lunch Break" },
-      { time: "3:00 PM", activity: "Session" },
+      { time: "7:30 AM", activity: "Registration" },
+      { time: "10:00 AM", activity: "Session 1" },
+      { time: "1:00 PM", activity: "Lunch" },
+      { time: "3:00 PM", activity: "Session 2" },
+      { time: "4:30 PM", activity: "Q&A" },
     ],
   },
-  {
-    day: "Saturday",
+  saturday: {
+    label: "Saturday",
+    date: "May 24",
     slots: [
-      { time: "10:00 AM", activity: "Session" },
-      { time: "1:00 PM", activity: "Lunch Break" },
+      { time: "7:30 AM", activity: "Registration" },
+      { time: "10:00 AM", activity: "Session 1" },
+      { time: "1:00 PM", activity: "Lunch" },
+      { time: "5:00 PM", activity: "Youth Park/Fellowship" },
     ],
   },
-];
+};
 
 export function SchedulePage() {
   return (
@@ -35,31 +40,23 @@ export function SchedulePage() {
           </p>
         </section>
 
-        <section className="schedule__table">
-          <div className="schedule__table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Day</th>
-                  <th>Time</th>
-                  <th>Activity</th>
-                </tr>
-              </thead>
-              <tbody>
-                {conferenceSchedule.map((day) =>
-                  day.slots.map((slot) => (
-                    <tr key={`${day.day}-${slot.time}`}>
-                      <td className="schedule__table-day" data-label="Day">
-                        {day.day}
-                      </td>
-                      <td data-label="Time">{slot.time}</td>
-                      <td data-label="Activity">{slot.activity}</td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
+        <section className="schedule__cards">
+          {[conferenceSchedule.friday, conferenceSchedule.saturday].map((day) => (
+            <article key={day.label} className="schedule__card">
+              <header className="schedule__card-header">
+                <p className="schedule__card-eyebrow">{day.date}</p>
+                <h2>{day.label}</h2>
+              </header>
+              <ul className="schedule__slots">
+                {day.slots.map((slot) => (
+                  <li key={`${day.label}-${slot.time}`} className="schedule__slot">
+                    <span className="schedule__slot-time">{slot.time}</span>
+                    <span className="schedule__slot-activity">{slot.activity}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </section>
       </main>
       <Footer />

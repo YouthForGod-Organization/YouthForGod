@@ -4,11 +4,12 @@ import benImage from "../../assets/benCropped.webp";
 import neymanImage from "../../assets/neymanCropped.webp";
 import romanImage from "../../assets/roman.webp";
 import danielImage from "../../assets/DanielClark_Bio.webp";
+import stepaImage from "../../assets/stepa2.webp";
 import "./Speakers.scss";
 
 const speakers = [
   {
-    name: "Ben Balzhyk",
+    name: "Benjamin Baljic",
     title: "Pastor",
     organization: "Independent Baptist Church",
     image: benImage,
@@ -30,6 +31,12 @@ const speakers = [
     title: "Pastor",
     organization: "Evengalical Bible Fellowship",
     image: danielImage,
+  },
+  {
+    name: "Stepan Misiruk",
+    title: "Pastor",
+    organization: "Gospel Light Baptist Church",
+    image: stepaImage,
   },
 ];
 

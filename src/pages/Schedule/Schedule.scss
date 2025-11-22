@@ -41,96 +41,66 @@ $hero-bg: #f6f4ef;
   padding: clamp(32px, 6vw, 80px) clamp(20px, 6vw, 60px);
 }
 
-.schedule__table-wrapper {
-  width: min(820px, 100%);
+.schedule__cards {
+  width: min(1100px, 100%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: 50px;
+}
+
+.schedule__card {
   background: #fff;
   border-radius: 24px;
-  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.09);
-  overflow: hidden;
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  thead {
-    display: none;
-  }
-
-  tbody tr {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  }
-
-  td {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    color: rgba(0, 0, 0, 0.75);
-  }
-
-  td::before {
-    content: attr(data-label);
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.55);
-  }
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.schedule__table-day {
-  font-family: $font-heading;
-  letter-spacing: 0.22em;
+.schedule__card-header {
+  margin-bottom: 1rem;
+}
+
+.schedule__card-header h2 {
+  margin: 0.15rem 0 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+}
+
+.schedule__card-eyebrow {
+  margin: 0;
   text-transform: uppercase;
-  color: $ink;
-  flex-direction: column;
-  align-items: flex-start;
+  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  color: rgba(0, 0, 0, 0.55);
 }
 
-.schedule__table-wrapper td[data-label="Time"] {
-  font-weight: 600;
+.schedule__slots {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.schedule__slot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.schedule__slot-time {
+  font-weight: 700;
   letter-spacing: 0.08em;
   color: $ink;
+  min-width: 110px;
 }
 
-@media (min-width: 768px) {
-  .schedule__table-wrapper thead {
-    display: table-header-group;
-  }
-
-  .schedule__table-wrapper tbody tr {
-    display: table-row;
-    padding: 0;
-  }
-
-  .schedule__table-wrapper td,
-  .schedule__table-wrapper th {
-    display: table-cell;
-    padding: 1.05rem 1.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    text-align: left;
-  }
-
-  .schedule__table-wrapper td::before {
-    content: none;
-  }
-
-  .schedule__table-wrapper thead th {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.6);
-    background: rgba(0, 0, 0, 0.04);
-  }
-
-  .schedule__table-day {
-    font-size: 1.05rem;
-    letter-spacing: 0.25em;
-    background: rgba(0, 0, 0, 0.02);
-  }
+.schedule__slot-activity {
+  color: $ink-weak;
 }

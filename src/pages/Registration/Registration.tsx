@@ -18,7 +18,7 @@ const supportItems = [
   },
   {
     title: "Need Help?",
-    description: "Email hello@youthforgod.org or call (916) 555-2041 for support.",
+    description: "Email contact@youth4god.org for support.",
   },
 ];
 

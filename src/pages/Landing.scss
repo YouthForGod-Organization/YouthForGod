@@ -37,11 +37,19 @@ $accent: #d4af37;
     text-align: center;
   }
 
+  &__logo {
+    display: block;
+    margin: 0 auto clamp(0.75rem, 2vw, 1.25rem);
+    height: clamp(64px, 12vw, 96px);
+    width: auto;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
+  }
+
   &__title {
     font-family: "Cormorant Garamond", "Times New Roman", serif;
     font-size: clamp(2.5rem, 7vw, 4.5rem);
     letter-spacing: 0.15em;
-    font-weight: 300;
+    font-weight: 700;
     margin: 0;
     text-transform: uppercase;
     color: #fff;
@@ -109,6 +117,8 @@ $accent: #d4af37;
   border-radius: 18px;
   box-shadow: 0 35px 65px rgba(0, 0, 0, 0.18);
   padding: clamp(8px, 2vw, 18px);
+  position: relative;
+  overflow: hidden;
 }
 
 .yfg-video-card__media {
@@ -117,6 +127,44 @@ $accent: #d4af37;
   border-radius: 12px;
   aspect-ratio: 16 / 9;
   display: block;
+}
+
+.yfg-video-card__overlay {
+  position: absolute;
+  inset: clamp(8px, 2vw, 18px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35));
+  color: #fff;
+  font-family: $font-heading;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 12px;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  pointer-events: none;
+}
+
+.yfg-video-card__overlay--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.yfg-video-card__overlay-text {
+  margin: 0;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.4;
+  color: #fff;
+}
+
+.yfg-video-card__overlay-logo {
+  height: clamp(54px, 10vw, 84px);
+  width: auto;
+  // Force the logo to render white on the overlay while keeping depth
+  filter: invert(1) brightness(2) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
 }
 
 .yfg-section {
