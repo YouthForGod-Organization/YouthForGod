@@ -78,7 +78,7 @@ export function HomePage() {
       <section className="home__details" id="schedule">
         <div className="home__detail-card">
           <p className="home__detail-label">Dates</p>
-          <p className="home__detail-value">May 29 – 30, 2026</p>
+          <p className="home__detail-value">May 22-23, 2026</p>
         </div>
         <div className="home__detail-card">
           <p className="home__detail-label">Location</p>

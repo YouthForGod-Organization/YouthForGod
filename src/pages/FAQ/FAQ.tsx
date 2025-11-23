@@ -19,7 +19,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "What are the dates for Y4G conference?",
     answer:
-      "Mark your calendars! The conference kicks off on Friday, May 22 and wraps up on Sunday, May 24. We recommend checking the website regularly for any schedule updates and plan to arrive early so you can check in smoothly and grab a great seat!",
+      "Mark your calendars! The conference kicks off on Friday, May 22 and wraps up on Sunday, May 23. We recommend checking the website regularly for any schedule updates and plan to arrive early so you can check in smoothly and grab a great seat!",
   },
   {
     question: "Who can attend the conference?",
@@ -30,18 +30,25 @@ const faqs: { question: string; answer: ReactNode }[] = [
     question: "Do I need to register ahead of time?",
     answer: (
       <>
-        We highly recommend that all attendees register ahead of time. Early registration greatly helps us with preparation and planning, so please sign up in advance to secure your spot. However, we will still be able to accept{" "}
-        <strong>same-day registrations</strong> for those who may have missed the opportunity to register online.
+        We highly recommend that all attendees register ahead of time. Early
+        registration greatly helps us with preparation and planning, so please
+        sign up in advance to secure your spot. However, we will still be able
+        to accept <strong>same-day registrations</strong> for those who may have
+        missed the opportunity to register online.
       </>
     ),
   },
   {
-    question: "Will registration prices change as we get closer to the conference?",
+    question:
+      "Will registration prices change as we get closer to the conference?",
     answer: (
       <>
-        Yes, prices will increase the closer we get to the event. We encourage you to register early to get the best deal. We will offer{" "}
-        <strong>early-bird pricing</strong>, <strong>regular registration</strong>, <strong>late registration</strong>, and{" "}
-        <strong>walk-up pricing</strong>.
+        Yes, prices will increase the closer we get to the event. We encourage
+        you to register early to get the best deal. We will offer{" "}
+        <strong>early-bird pricing</strong>,{" "}
+        <strong>regular registration</strong>,{" "}
+        <strong>late registration</strong>, and <strong>walk-up pricing</strong>
+        .
       </>
     ),
   },

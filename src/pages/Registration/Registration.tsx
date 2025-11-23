@@ -3,18 +3,20 @@ import Footer from "../../components/Footer";
 import "./Registration.scss";
 
 const eventHighlights = [
-  { label: "Dates", value: "May 23 – 24, 2026" },
+  { label: "Dates", value: "May 22 – 23, 2026" },
   { label: "Location", value: "Sacramento, California" },
 ];
 
 const supportItems = [
   {
     title: "Group Registration",
-    description: "Register your entire youth group or ministry team in one session.",
+    description:
+      "Register your entire youth group or ministry team in one session.",
   },
   {
     title: "Payment Options",
-    description: "Secure checkout managed by Subsplash. Single and group payments accepted.",
+    description:
+      "Secure checkout managed by Subsplash. Single and group payments accepted.",
   },
   {
     title: "Need Help?",
@@ -33,12 +35,15 @@ export function RegistrationPage() {
           <div className="registration__highlights">
             {eventHighlights.map((item) => (
               <div key={item.label} className="registration__highlight">
-                <span className="registration__highlight-label">{item.label}</span>
-                <span className="registration__highlight-value">{item.value}</span>
+                <span className="registration__highlight-label">
+                  {item.label}
+                </span>
+                <span className="registration__highlight-value">
+                  {item.value}
+                </span>
               </div>
             ))}
           </div>
-
         </section>
 
         <section className="registration__form">
@@ -52,11 +57,8 @@ export function RegistrationPage() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-          
           </div>
         </section>
-
-  
       </main>
       <Footer />
     </>

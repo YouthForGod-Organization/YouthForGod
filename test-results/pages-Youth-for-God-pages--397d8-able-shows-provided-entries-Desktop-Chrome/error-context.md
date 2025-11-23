@@ -2,106 +2,106 @@
 
 ```yaml
 - generic [ref=e2]:
-  - banner [ref=e3]:
-    - generic [ref=e4]:
-      - link "Youth for God" [ref=e6] [cursor=pointer]:
-        - /url: /
-        - img "Youth for God" [ref=e7]
-      - navigation [ref=e8]:
-        - link "Home" [ref=e9] [cursor=pointer]:
-          - /url: /
-        - link "Speakers" [ref=e10] [cursor=pointer]:
-          - /url: /speakers
-        - link "Schedule" [ref=e11] [cursor=pointer]:
-          - /url: /schedule
-        - link "FAQ" [ref=e12] [cursor=pointer]:
-          - /url: /faq
-        - link "Register" [ref=e13] [cursor=pointer]:
-          - /url: /register
-  - main [ref=e14]:
-    - generic [ref=e15]:
-      - paragraph [ref=e16]: May 29 – 30 · Sacramento
-      - heading "Schedule & Flow" [level=1] [ref=e17]
-      - paragraph [ref=e18]: Every block is crafted to move students from inspiration to activation—anchored in Scripture, honest Q&A, and hands-on labs.
-    - table [ref=e21]:
-      - rowgroup [ref=e22]:
-        - row "Day Time Activity" [ref=e23]:
-          - cell "Day" [ref=e24]
-          - cell "Time" [ref=e25]
-          - cell "Activity" [ref=e26]
-      - rowgroup [ref=e27]:
-        - row "Friday 8:00 AM Registration" [ref=e28]:
-          - cell "Friday" [ref=e29]
-          - cell "8:00 AM" [ref=e30]
-          - cell "Registration" [ref=e31]
-        - row "Friday 10:00 AM Session" [ref=e32]:
-          - cell "Friday" [ref=e33]
-          - cell "10:00 AM" [ref=e34]
-          - cell "Session" [ref=e35]
-        - row "Friday 1:00 PM Lunch Break" [ref=e36]:
-          - cell "Friday" [ref=e37]
-          - cell "1:00 PM" [ref=e38]
-          - cell "Lunch Break" [ref=e39]
-        - row "Friday 3:00 PM Session" [ref=e40]:
-          - cell "Friday" [ref=e41]
-          - cell "3:00 PM" [ref=e42]
-          - cell "Session" [ref=e43]
-        - row "Saturday 10:00 AM Session" [ref=e44]:
-          - cell "Saturday" [ref=e45]
-          - cell "10:00 AM" [ref=e46]
-          - cell "Session" [ref=e47]
-        - row "Saturday 1:00 PM Lunch Break" [ref=e48]:
-          - cell "Saturday" [ref=e49]
-          - cell "1:00 PM" [ref=e50]
-          - cell "Lunch Break" [ref=e51]
-  - contentinfo [ref=e52]:
-    - generic [ref=e53]:
-      - generic [ref=e54]:
-        - link "Youth for God home" [ref=e55] [cursor=pointer]:
-          - /url: /
-          - img "Youth for God" [ref=e56]
-        - paragraph [ref=e57]: Youth for God Conference exists to elevate Christ alone and equip the next generation of disciple-makers through gospel-saturated teaching, worship, and community.
-        - generic [ref=e58]:
-          - link "Instagram" [ref=e59] [cursor=pointer]:
-            - /url: https://instagram.com
-          - link "YouTube" [ref=e60] [cursor=pointer]:
-            - /url: https://youtube.com
-          - link "Spotify" [ref=e61] [cursor=pointer]:
-            - /url: https://spotify.com
-      - generic [ref=e62]:
-        - heading "Quick Links" [level=4] [ref=e63]
-        - list [ref=e64]:
-          - listitem [ref=e65]:
-            - link "Home" [ref=e66] [cursor=pointer]:
-              - /url: /
-          - listitem [ref=e67]:
-            - link "Speakers" [ref=e68] [cursor=pointer]:
-              - /url: /speakers
-          - listitem [ref=e69]:
-            - link "Schedule" [ref=e70] [cursor=pointer]:
-              - /url: /schedule
-          - listitem [ref=e71]:
-            - link "Register" [ref=e72] [cursor=pointer]:
-              - /url: /register
-      - generic [ref=e73]:
-        - heading "Contact" [level=4] [ref=e74]
-        - list [ref=e75]:
-          - listitem [ref=e76]:
-            - generic [ref=e77]: "Email:"
-            - link "hello@youthforgod.org" [ref=e78] [cursor=pointer]:
-              - /url: mailto:hello@youthforgod.org
-          - listitem [ref=e79]:
-            - generic [ref=e80]: "Phone:"
-            - link "(916) 555-2041" [ref=e81] [cursor=pointer]:
-              - /url: tel:+19165552041
-          - listitem [ref=e82]:
-            - generic [ref=e83]: "Location:"
-            - text: Sacramento, CA
-    - generic [ref=e84]:
-      - paragraph [ref=e85]: © 2025 Youth for God Conference. All rights reserved.
-      - generic [ref=e86]:
-        - link "Privacy" [ref=e87] [cursor=pointer]:
-          - /url: /privacy
-        - link "Terms" [ref=e88] [cursor=pointer]:
-          - /url: /terms
+    - banner [ref=e3]:
+        - generic [ref=e4]:
+            - link "Youth for God" [ref=e6] [cursor=pointer]:
+                - /url: /
+                - img "Youth for God" [ref=e7]
+            - navigation [ref=e8]:
+                - link "Home" [ref=e9] [cursor=pointer]:
+                    - /url: /
+                - link "Speakers" [ref=e10] [cursor=pointer]:
+                    - /url: /speakers
+                - link "Schedule" [ref=e11] [cursor=pointer]:
+                    - /url: /schedule
+                - link "FAQ" [ref=e12] [cursor=pointer]:
+                    - /url: /faq
+                - link "Register" [ref=e13] [cursor=pointer]:
+                    - /url: /register
+    - main [ref=e14]:
+        - generic [ref=e15]:
+            - paragraph [ref=e16]: May 22 – 23 · Sacramento
+            - heading "Schedule & Flow" [level=1] [ref=e17]
+            - paragraph [ref=e18]: Every block is crafted to move students from inspiration to activation—anchored in Scripture, honest Q&A, and hands-on labs.
+        - table [ref=e21]:
+            - rowgroup [ref=e22]:
+                - row "Day Time Activity" [ref=e23]:
+                    - cell "Day" [ref=e24]
+                    - cell "Time" [ref=e25]
+                    - cell "Activity" [ref=e26]
+            - rowgroup [ref=e27]:
+                - row "Friday 8:00 AM Registration" [ref=e28]:
+                    - cell "Friday" [ref=e29]
+                    - cell "8:00 AM" [ref=e30]
+                    - cell "Registration" [ref=e31]
+                - row "Friday 10:00 AM Session" [ref=e32]:
+                    - cell "Friday" [ref=e33]
+                    - cell "10:00 AM" [ref=e34]
+                    - cell "Session" [ref=e35]
+                - row "Friday 1:00 PM Lunch Break" [ref=e36]:
+                    - cell "Friday" [ref=e37]
+                    - cell "1:00 PM" [ref=e38]
+                    - cell "Lunch Break" [ref=e39]
+                - row "Friday 3:00 PM Session" [ref=e40]:
+                    - cell "Friday" [ref=e41]
+                    - cell "3:00 PM" [ref=e42]
+                    - cell "Session" [ref=e43]
+                - row "Saturday 10:00 AM Session" [ref=e44]:
+                    - cell "Saturday" [ref=e45]
+                    - cell "10:00 AM" [ref=e46]
+                    - cell "Session" [ref=e47]
+                - row "Saturday 1:00 PM Lunch Break" [ref=e48]:
+                    - cell "Saturday" [ref=e49]
+                    - cell "1:00 PM" [ref=e50]
+                    - cell "Lunch Break" [ref=e51]
+    - contentinfo [ref=e52]:
+        - generic [ref=e53]:
+            - generic [ref=e54]:
+                - link "Youth for God home" [ref=e55] [cursor=pointer]:
+                    - /url: /
+                    - img "Youth for God" [ref=e56]
+                - paragraph [ref=e57]: Youth for God Conference exists to elevate Christ alone and equip the next generation of disciple-makers through gospel-saturated teaching, worship, and community.
+                - generic [ref=e58]:
+                    - link "Instagram" [ref=e59] [cursor=pointer]:
+                        - /url: https://instagram.com
+                    - link "YouTube" [ref=e60] [cursor=pointer]:
+                        - /url: https://youtube.com
+                    - link "Spotify" [ref=e61] [cursor=pointer]:
+                        - /url: https://spotify.com
+            - generic [ref=e62]:
+                - heading "Quick Links" [level=4] [ref=e63]
+                - list [ref=e64]:
+                    - listitem [ref=e65]:
+                        - link "Home" [ref=e66] [cursor=pointer]:
+                            - /url: /
+                    - listitem [ref=e67]:
+                        - link "Speakers" [ref=e68] [cursor=pointer]:
+                            - /url: /speakers
+                    - listitem [ref=e69]:
+                        - link "Schedule" [ref=e70] [cursor=pointer]:
+                            - /url: /schedule
+                    - listitem [ref=e71]:
+                        - link "Register" [ref=e72] [cursor=pointer]:
+                            - /url: /register
+            - generic [ref=e73]:
+                - heading "Contact" [level=4] [ref=e74]
+                - list [ref=e75]:
+                    - listitem [ref=e76]:
+                        - generic [ref=e77]: "Email:"
+                        - link "hello@youthforgod.org" [ref=e78] [cursor=pointer]:
+                            - /url: mailto:hello@youthforgod.org
+                    - listitem [ref=e79]:
+                        - generic [ref=e80]: "Phone:"
+                        - link "(916) 555-2041" [ref=e81] [cursor=pointer]:
+                            - /url: tel:+19165552041
+                    - listitem [ref=e82]:
+                        - generic [ref=e83]: "Location:"
+                        - text: Sacramento, CA
+        - generic [ref=e84]:
+            - paragraph [ref=e85]: © 2025 Youth for God Conference. All rights reserved.
+            - generic [ref=e86]:
+                - link "Privacy" [ref=e87] [cursor=pointer]:
+                    - /url: /privacy
+                - link "Terms" [ref=e88] [cursor=pointer]:
+                    - /url: /terms
 ```
