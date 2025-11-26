@@ -17,11 +17,11 @@ const speakers = [
   {
     name: "Konstantin Neyman",
     title: "Pastor",
-    organization: "Word of Truth",
+    organization: "Word of Truth Bible Church",
     image: neymanImage,
   },
   {
-    name: "Roman Balatski",
+    name: "Roman Balatskiy",
     title: "Youth Pastor",
     organization: "Bible Baptist Church",
     image: romanImage,

@@ -4,7 +4,7 @@
 $ink: #1a1a1a;
 $ink-weak: #444;
 $muted: #f5f5f5;
-$accent: #d4af37;
+$accent: #c09b3c;
 
 .yfg-hero {
   position: relative;
@@ -169,7 +169,39 @@ $accent: #d4af37;
 
 .yfg-section {
   padding: clamp(40px, 6vw, 72px) 0;
-  background: #fffdf8;
+  position: relative;
+  background: radial-gradient(circle at 20% 20%, #fff6e2 0, rgba(255, 246, 226, 0.45) 30%, transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(212, 175, 55, 0.12), transparent 35%),
+    #fffdf8;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0), rgba(212, 175, 55, 0.2));
+    height: 4px;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #fff 100%);
+    z-index: 0;
+  }
+}
+
+.yfg-section__content {
+  position: relative;
+  display: grid;
+  gap: clamp(16px, 3vw, 28px);
+  text-align: center;
+  z-index: 2;
 }
 
 .yfg-h2 {
@@ -177,6 +209,17 @@ $accent: #d4af37;
   font-weight: 700;
   margin: 0 0 12px;
   text-align: center;
+  letter-spacing: 0.08em;
+
+  &::after {
+    content: "";
+    display: block;
+    margin: 10px auto 0;
+    width: 64px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, $accent, transparent);
+  }
 }
 
 .yfg-lead {

@@ -74,19 +74,22 @@ export function Landing() {
         </section>
 
         <section id="info" className="yfg-section">
-          <div className="yfg-container">
-            <h2 className="yfg-h2">Mission Statement</h2>
+          <div className="yfg-container yfg-section__content">
+            <h2 className="yfg-h2">Youth For God Conference 2026</h2>
             <p className="yfg-lead">
-              Youth for God Conference exists to equip and exhort the next
-              generation to live as ambassadors of Jesus Christ, so that God may
-              ultimately be glorified.
+              There is only one way to the Father. There is only one door and
+              one narrow path. There is only one King and one Redeemer. Only One
+              can make sinners righteous before a holy God, and only One is
+              worthy to be proclaimed, followed, and glorified. This is the
+              message at the heart of <em>Solus Christus</em>: Christ alone as
+              the hope, salvation, and joy of every believer.
             </p>
             <figure className="yfg-scripture">
               <blockquote>
-                “God made him who had no sin to be sin for us, so that in him we
-                might become the righteousness of God.”
+                “Jesus said to him, “I am the way, and the truth, and the life;
+                no one comes to the Father but through Me.”
               </blockquote>
-              <figcaption>2 Corinthians 5:21</figcaption>
+              <figcaption>John 14:6</figcaption>
             </figure>
           </div>
         </section>
