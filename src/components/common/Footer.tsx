@@ -29,7 +29,7 @@ export function Footer() {
             <img className="footer__logo" src={logo} alt="Youth for God" />
           </Link>
           <p>
-            Youth for God conference exits to elevate Christ and equip the next
+            Youth for God conference exists to elevate Christ and equip the next
             generation through gospel centered preaching, worship and community.
           </p>
         </div>
