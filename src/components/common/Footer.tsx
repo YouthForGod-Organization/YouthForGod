@@ -1,3 +1,4 @@
+// Renders shared event branding, route shortcuts, and support contact details.
 import { Link } from "react-router-dom";
 import logo from "../../assets/updatedLogo2.png";
 import "./Footer.scss";

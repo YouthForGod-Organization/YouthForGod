@@ -1,3 +1,4 @@
+// Provides a reusable header/content/footer shell for pages that use nested routing.
 import { Outlet } from "react-router-dom";
 import { NavBar } from "../common/NavBar";
 import { Footer } from "../common/Footer";

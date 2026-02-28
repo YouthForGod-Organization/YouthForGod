@@ -1,3 +1,4 @@
+// Presents the conference hero, promo media, and core event message on the home route.
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";

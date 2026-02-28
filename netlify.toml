@@ -1,3 +1,4 @@
+# Route all requests to the SPA entry point so client-side routing works on refresh.
 [[redirects]]
   from = "/*"
   to = "/index.html"

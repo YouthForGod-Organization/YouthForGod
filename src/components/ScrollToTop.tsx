@@ -1,3 +1,4 @@
+// Resets scroll position after each route change so new pages open from the top.
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 

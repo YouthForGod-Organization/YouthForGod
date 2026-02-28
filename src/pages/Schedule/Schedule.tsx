@@ -1,3 +1,4 @@
+// Displays the current two-day conference schedule as grouped session cards.
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./Schedule.scss";

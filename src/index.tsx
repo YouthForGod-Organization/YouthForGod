@@ -1,3 +1,4 @@
+// Bootstraps the React app and shared global styles into the root mount node.
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import "./styles/globals.scss";

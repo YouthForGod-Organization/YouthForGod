@@ -1,3 +1,4 @@
+// Declares imported asset modules so TypeScript accepts bundled media references.
 declare module "*.svg" {
   const content: string;
   export default content;

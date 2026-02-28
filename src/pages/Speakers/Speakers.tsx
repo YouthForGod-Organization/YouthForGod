@@ -1,3 +1,4 @@
+// Showcases the featured speaker roster with names, roles, and church affiliations.
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import benImage from "../../assets/benCropped.webp";
@@ -29,7 +30,7 @@ const speakers = [
   {
     name: "Daniel Clark",
     title: "Pastor",
-    organization: "Evengalical Bible Fellowship",
+    organization: "Evangelical Bible Fellowship",
     image: danielImage,
   },
   {

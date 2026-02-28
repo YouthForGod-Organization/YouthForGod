@@ -1,3 +1,4 @@
+// Renders the primary site navigation and a collapsible mobile menu.
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/updatedLogo2.png";

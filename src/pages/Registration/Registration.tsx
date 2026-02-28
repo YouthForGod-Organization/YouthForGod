@@ -1,3 +1,4 @@
+// Summarizes registration details and embeds the hosted event checkout flow.
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./Registration.scss";

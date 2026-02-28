@@ -1,3 +1,4 @@
+// Defines the public route map for the conference site.
 import { Route, Routes } from "react-router-dom";
 import { Landing } from "../pages/Landing";
 import { SchedulePage } from "../pages/Schedule/Schedule";

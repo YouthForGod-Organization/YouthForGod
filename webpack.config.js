@@ -1,3 +1,4 @@
+// Bundles the React single-page app, shared styles, and static media assets.
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 

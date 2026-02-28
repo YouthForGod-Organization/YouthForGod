@@ -1,3 +1,4 @@
+// Runs routed smoke coverage against the production preview build on desktop and mobile.
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
