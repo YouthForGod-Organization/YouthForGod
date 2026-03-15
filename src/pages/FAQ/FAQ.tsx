@@ -81,7 +81,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "When is the deadline for registering for the conference?",
     answer:
-      "Registration closes 90 days before the conference starts, so be sure to sign up early to reserve your spot!",
+      "Registration closes March 31st, so be sure to sign up early to reserve your spot!",
   },
 ];
 

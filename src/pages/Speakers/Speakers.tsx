@@ -50,7 +50,7 @@ export function SpeakersPage() {
           <p className="speakers__eyebrow">Meet the voices</p>
           <h1>Speakers</h1>
           <p className="speakers__lead">
-            Pastors, Teachers, and Sheperds committed to equipping the next
+            Pastors, Teachers, and Shepherds committed to equipping the next
             generation with gospel clarity.
           </p>
         </section>
