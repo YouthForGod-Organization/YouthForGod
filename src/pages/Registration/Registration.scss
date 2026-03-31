@@ -115,6 +115,41 @@
     overflow: hidden;
   }
 
+  &__fallback {
+    margin-top: clamp(20px, 4vw, 32px);
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  &__fallback-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(26, 26, 26, 0.8);
+  }
+
+  &__fallback-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(26, 26, 26, 0.24);
+    background: transparent;
+    color: var(--color-primary-black);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgba(26, 26, 26, 0.06);
+      border-color: rgba(26, 26, 26, 0.45);
+    }
+  }
+
   iframe {
     width: 100%;
     min-height: clamp(640px, 90vh, 920px);

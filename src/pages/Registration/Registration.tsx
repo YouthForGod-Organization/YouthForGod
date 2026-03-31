@@ -77,6 +77,19 @@ export function RegistrationPage() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <div className="registration__fallback">
+              <p className="registration__fallback-text">
+                Having technical issues with registration?
+              </p>
+              <a
+                className="registration__fallback-button"
+                href="https://subsplash.com/bbc-ca/lb/ev/+pn3qtnr/register"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Click here to register in a new tab
+              </a>
+            </div>
           </div>
         </section>
       </main>
