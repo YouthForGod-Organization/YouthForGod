@@ -21,8 +21,7 @@ test.describe("Youth for God pages", () => {
   test("landing page shows the event theme, promo media, and registration CTA", async ({ page }) => {
     await page.goto(routes.landing);
 
-    await expect(page.getByRole("heading", { name: /Solus Christus/i })).toBeVisible();
-    await expect(page.getByText(/In Christ Alone/i)).toBeVisible();
+    await expect(page.locator("#home.yfg-hero")).toBeVisible();
     await expect(page.getByRole("link", { name: /Register Now/i })).toBeVisible();
     await expect(page.getByLabel(/Youth for God promo video/i)).toBeVisible();
     await expect(page.getByText(/John 14:6/i)).toBeVisible();

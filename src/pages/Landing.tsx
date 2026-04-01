@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import hero from "../assets/backgroundImage2.png";
 import promoVideoWebm from "../assets/Conferencepromo2.webm";
 import promoVideoMp4 from "../assets/Conferencepromo2.mp4";
 import updatedLogo2 from "../assets/updatedLogo2.png";
@@ -25,15 +24,19 @@ export function Landing() {
           className="yfg-hero"
           role="region"
           aria-label="Solus Christus banner"
-          style={{
-            backgroundImage: `url(${hero})`,
-          }}
         >
-          <div className="yfg-container yfg-hero__inner">
-            <div className="yfg-hero__copy">
-              <h1 className="yfg-hero__title">Solus Christus</h1>
-              <p className="yfg-hero__season">In Christ Alone</p>
-            </div>
+          <picture className="yfg-hero__media" aria-hidden="true">
+            <source media="(max-width: 1023px)" srcSet="/mobileHeroImage.jpg" />
+            <source media="(min-width: 1024px)" srcSet="/desktopHeroImage.jpg" />
+            <img
+              className="yfg-hero__image"
+              src="/desktopHeroImage.jpg"
+              alt=""
+              loading="eager"
+              fetchPriority="high"
+            />
+          </picture>
+          <div className="yfg-container yfg-hero__cta">
             <Link className="yfg-btn yfg-btn--primary" to="/register">
               Register Now
             </Link>
