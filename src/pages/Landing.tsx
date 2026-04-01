@@ -26,14 +26,21 @@ export function Landing() {
           aria-label="Solus Christus banner"
         >
           <picture className="yfg-hero__media" aria-hidden="true">
-            <source media="(max-width: 1023px)" srcSet="/mobileHeroImage.jpg" />
-            <source media="(min-width: 1024px)" srcSet="/desktopHeroImage.jpg" />
+            <source
+              media="(max-width: 1023px)"
+              srcSet="/mobileHeroImage.optimized.jpg"
+            />
+            <source
+              media="(min-width: 1024px)"
+              srcSet="/desktopHeroImage.optimized.jpg"
+            />
             <img
               className="yfg-hero__image"
-              src="/desktopHeroImage.jpg"
+              src="/desktopHeroImage.optimized.jpg"
               alt=""
               loading="eager"
               fetchPriority="high"
+              decoding="async"
             />
           </picture>
           <div className="yfg-container yfg-hero__cta">
