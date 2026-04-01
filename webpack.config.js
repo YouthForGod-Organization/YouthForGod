@@ -42,7 +42,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html"),
-      favicon: path.resolve(__dirname, "public/WhiteTransparentLogo.png"),
+      favicon: path.resolve(__dirname, "public/faviconBlack.png"),
     }),
     new CopyWebpackPlugin({
       patterns: [
