@@ -74,14 +74,12 @@ test.describe("Youth for God pages", () => {
     );
   });
 
-  test("registration page shows pricing, event details, and the hosted embed", async ({ page }) => {
+  test("registration page shows event details and the hosted embed", async ({ page }) => {
     await page.goto(routes.registration, { waitUntil: "domcontentloaded" });
 
     await expect(page.getByRole("heading", { name: /Secure Your Spot/i })).toBeVisible();
     await expect(page.getByText(/May 22 – 23, 2026/i)).toBeVisible();
     await expect(page.getByText(/Sacramento, California/i)).toBeVisible();
-    await expect(page.getByText(/Early Bird \(until January 1\)/i)).toBeVisible();
-    await expect(page.getByText(/\$40/i)).toBeVisible();
     await expect(page.locator('iframe[title*="Registration" i]')).toBeVisible();
   });
 
