@@ -67,7 +67,7 @@ test.describe("Youth for God pages", () => {
     const venueQuestion = page.getByText("Where will the Y4G conference be held?");
     await venueQuestion.click();
 
-    await expect(page.getByRole("link", { name: /1000 Sacramento Ave\., West Sacramento, CA/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /1000 Sacramento Ave, West Sacramento, CA/i })).toBeVisible();
     await expect(page.getByRole("link", { name: /Email Support/i })).toHaveAttribute(
       "href",
       "mailto:contact@youth4god.org"

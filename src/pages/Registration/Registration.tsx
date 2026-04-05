@@ -49,13 +49,6 @@ export function RegistrationPage() {
 
         <section className="registration__form">
           <div className="container">
-            <div className="registration__alert" role="status" aria-live="polite">
-              <p className="registration__alert-title">Disclaimer</p>
-              <p className="registration__alert-text">
-                Registration is currently closed. It will reopen on April 4,
-                2026 at 6:00 PM PT and close on April 19, 2026 at 11:59 PM PT.
-              </p>
-            </div>
             <div className="registration__frame-wrapper">
               <iframe
                 title="Youth for God Conference Registration"

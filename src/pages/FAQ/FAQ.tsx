@@ -11,7 +11,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
       <>
         We're excited to welcome you to Bryte Church, conveniently located at{" "}
         <a href="https://goo.gl/maps/fVaEyTs1riJMEuBk6">
-          1000 Sacramento Ave., West Sacramento, CA
+          1000 Sacramento Ave, West Sacramento, CA
         </a>
         . We can't wait to see you there!
       </>
@@ -25,7 +25,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Who can attend the conference?",
     answer:
-      "The conference is open to all youth who has registered and purchased a ticket. We'd love to have you join us!",
+      "The conference is open to all youth who have registered and purchased a ticket. We'd love to have you join us!",
   },
   {
     question: "Do I need to register ahead of time?",

@@ -60,36 +60,6 @@
     overflow: hidden;
   }
 
-  &__alert {
-    margin: clamp(14px, 2.5vw, 22px) auto clamp(18px, 3vw, 26px);
-    max-width: 820px;
-    border-radius: 10px;
-    border: 1px solid rgba(26, 26, 26, 0.12);
-    border-left: 4px solid var(--color-accent-gold);
-    background: #fffdf8;
-    color: var(--color-primary-black);
-    box-shadow: none;
-    padding: clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 20px);
-    text-align: left;
-  }
-
-  &__alert-title {
-    margin: 0;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(26, 26, 26, 0.72);
-  }
-
-  &__alert-text {
-    margin: 6px 0 0;
-    font-size: clamp(0.94rem, 1.9vw, 1rem);
-    font-weight: 500;
-    line-height: 1.5;
-    color: rgba(26, 26, 26, 0.9);
-  }
-
   &__fallback {
     margin-top: clamp(20px, 4vw, 32px);
     display: grid;
