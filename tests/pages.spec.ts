@@ -94,5 +94,9 @@ test.describe("Youth for God pages", () => {
       "href",
       "mailto:contact@youth4god.org"
     );
+    await expect(footer.getByRole("link", { name: /^Instagram$/i })).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/youth4godcon/"
+    );
   });
 });

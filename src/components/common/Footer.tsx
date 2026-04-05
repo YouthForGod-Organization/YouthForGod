@@ -19,6 +19,13 @@ const contactDetails = [
   { label: "Location", value: "Sacramento, CA" },
 ];
 
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/youth4godcon/",
+  },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -33,6 +40,18 @@ export function Footer() {
             Youth for God conference exists to elevate Christ and equip the next
             generation through gospel centered preaching, worship and community.
           </p>
+          <div className="footer__social" aria-label="Social links">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="footer__links">
