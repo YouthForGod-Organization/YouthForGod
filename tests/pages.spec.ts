@@ -43,9 +43,22 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByText(/May 22 – 23 · Sacramento/i)).toBeVisible();
     await expect(page.getByRole("heading", { name: /^Friday$/i })).toBeVisible();
     await expect(page.getByRole("heading", { name: /^Saturday$/i })).toBeVisible();
-    await expect(page.getByText("7:30 AM")).toBeVisible();
-    await expect(page.getByText("5:00 PM")).toBeVisible();
-    await expect(page.getByText(/Youth Park\/Fellowship/i)).toBeVisible();
+
+    const friday = page.locator(".schedule__card").filter({
+      has: page.getByRole("heading", { name: /^Friday$/i }),
+    });
+    const saturday = page.locator(".schedule__card").filter({
+      has: page.getByRole("heading", { name: /^Saturday$/i }),
+    });
+
+    await expect(friday.getByText("8:00 AM")).toBeVisible();
+    await expect(friday.getByText("Registration")).toBeVisible();
+    await expect(friday.getByText("8:00 - 9:30 AM")).toBeVisible();
+    await expect(friday.getByText("Coffee Cart Open")).toBeVisible();
+    await expect(saturday.getByText("8:00 - 9:30 AM")).toBeVisible();
+    await expect(saturday.getByText("Coffee Cart Open")).toBeVisible();
+    await expect(saturday.getByText("3:00 PM")).toBeVisible();
+    await expect(saturday.getByText(/Park \/ Fellowship/i)).toBeVisible();
   });
 
   test("speakers page renders the full featured speaker roster", async ({ page }) => {
@@ -72,6 +85,14 @@ test.describe("Youth for God pages", () => {
       "href",
       "mailto:contact@youth4god.org"
     );
+
+    await page.getByText("Will registration prices change as we get closer to the conference?").click();
+    await expect(page.getByText(/same-day registration remains \$60/i)).toBeVisible();
+    await expect(page.getByText(/no day-of upcharge/i)).toBeVisible();
+
+    await page.getByText("When is the deadline for registering for the conference?").click();
+    await expect(page.getByText(/online registration closes March 31st/i)).toBeVisible();
+    await expect(page.getByText(/same-day registration will still be available for \$60/i)).toBeVisible();
   });
 
   test("registration page shows event details and the hosted embed", async ({ page }) => {

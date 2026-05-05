@@ -44,12 +44,10 @@ const faqs: { question: string; answer: ReactNode }[] = [
       "Will registration prices change as we get closer to the conference?",
     answer: (
       <>
-        Yes, prices will increase the closer we get to the event. We encourage
-        you to register early to get the best deal. We will offer{" "}
-        <strong>early-bird pricing</strong>,{" "}
-        <strong>regular registration</strong>,{" "}
-        <strong>late registration</strong>, and <strong>walk-up pricing</strong>
-        .
+        No. <strong>Same-day registration remains $60</strong>, so there is{" "}
+        <strong>no day-of upcharge</strong> for registering when you arrive. We
+        still recommend registering ahead of time because it helps us plan for
+        attendance, check-in, and meals.
       </>
     ),
   },
@@ -81,7 +79,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "When is the deadline for registering for the conference?",
     answer:
-      "Registration closes March 31st, so be sure to sign up early to reserve your spot!",
+      "Online registration closes March 31st, so please sign up early when possible. If you miss that deadline, same-day registration will still be available for $60 when you arrive at the conference.",
   },
 ];
 
