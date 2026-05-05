@@ -64,7 +64,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Will food be provided?",
     answer:
-      "Yes! We'll be providing lunch and dinner throughout the conference. However, if you have specific dietary restrictions or allergies, please plan to bring your own accommodations to ensure your needs are met.",
+      "Yes! We'll be providing lunch both days and dinner only Saturday at the park. However, if you have specific dietary restrictions or allergies, please plan to bring your own accommodations to ensure your needs are met.",
   },
   {
     question: "Are hotels provided?",

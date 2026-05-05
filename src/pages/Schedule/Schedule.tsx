@@ -23,7 +23,7 @@ const conferenceSchedule = {
       { time: "8:00 - 9:30 AM", activity: "Coffee Cart Open" },
       { time: "10:00 AM", activity: "Session 1" },
       { time: "1:00 PM", activity: "Lunch" },
-      { time: "3:00 PM", activity: "Park / Fellowship" },
+      { time: "3:00 PM", activity: "Park / Dinner" },
     ],
   },
 };

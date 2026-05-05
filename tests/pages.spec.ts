@@ -58,7 +58,7 @@ test.describe("Youth for God pages", () => {
     await expect(saturday.getByText("8:00 - 9:30 AM")).toBeVisible();
     await expect(saturday.getByText("Coffee Cart Open")).toBeVisible();
     await expect(saturday.getByText("3:00 PM")).toBeVisible();
-    await expect(saturday.getByText(/Park \/ Fellowship/i)).toBeVisible();
+    await expect(saturday.getByText(/Park \/ Dinner/i)).toBeVisible();
   });
 
   test("speakers page renders the full featured speaker roster", async ({ page }) => {
@@ -89,6 +89,10 @@ test.describe("Youth for God pages", () => {
     await page.getByText("Will registration prices change as we get closer to the conference?").click();
     await expect(page.getByText(/same-day registration remains \$60/i)).toBeVisible();
     await expect(page.getByText(/no day-of upcharge/i)).toBeVisible();
+
+    await page.getByText("Will food be provided?").click();
+    await expect(page.getByText(/providing lunch both days and dinner only Saturday at the park/i)).toBeVisible();
+    await expect(page.getByText(/dietary restrictions or allergies/i)).toBeVisible();
 
     await page.getByText("When is the deadline for registering for the conference?").click();
     await expect(page.getByText(/online registration closes March 31st/i)).toBeVisible();
