@@ -90,6 +90,10 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByText(/same-day registration remains \$60/i)).toBeVisible();
     await expect(page.getByText(/no day-of upcharge/i)).toBeVisible();
 
+    await page.getByText("Can I get a refund if I cancel my registration?").click();
+    await expect(page.getByText(/Thursday, May 21 at 11:59 PM/i)).toBeVisible();
+    await expect(page.getByText(/strict deadline/i)).toBeVisible();
+
     await page.getByText("Will food be provided?").click();
     await expect(page.getByText(/providing lunch both days and dinner only Saturday at the park/i)).toBeVisible();
     await expect(page.getByText(/dietary restrictions or allergies/i)).toBeVisible();
@@ -105,6 +109,9 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByRole("heading", { name: /Secure Your Spot/i })).toBeVisible();
     await expect(page.getByText(/May 22 – 23, 2026/i)).toBeVisible();
     await expect(page.getByText(/Sacramento, California/i)).toBeVisible();
+    const refundDeadline = page.getByText("Refund Deadline: Thursday, May 21 at 11:59 PM");
+    await expect(refundDeadline).toBeVisible();
+    await expect(refundDeadline).toHaveCSS("text-align", "center");
     await expect(page.locator('iframe[title*="Registration" i]')).toBeVisible();
   });
 

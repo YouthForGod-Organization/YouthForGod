@@ -49,6 +49,9 @@ export function RegistrationPage() {
 
         <section className="registration__form">
           <div className="container">
+            <p className="registration__refund-disclaimer">
+              Refund Deadline: Thursday, May 21 at 11:59 PM
+            </p>
             <div className="registration__frame-wrapper">
               <iframe
                 title="Youth for God Conference Registration"

@@ -15,8 +15,8 @@ Youth for God is a React single-page conference site for the 2026 "Solus Christu
 - `/` renders the landing page, promo video, and event summary.
 - `/schedule` renders the conference schedule cards for Friday and Saturday.
 - `/speakers` renders the featured speaker roster.
-- `/faq` renders collapsible attendee guidance and support links.
-- `/register` renders pricing details and the hosted registration iframe.
+- `/faq` renders collapsible attendee guidance, refund deadline details, and support links.
+- `/register` renders pricing details, refund deadline disclaimer, and the hosted registration iframe.
 
 ## Project Layout
 

@@ -54,7 +54,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Can I get a refund if I cancel my registration?",
     answer:
-      "We understand that plans can change! Refunds are available if you cancel up to 30 days before the conference start date. Please reach out to this email to get a refund issued.",
+      "We understand that plans can change! Refund requests must be submitted by Thursday, May 21 at 11:59 PM. This is a strict deadline. Please reach out to this email to get a refund issued.",
   },
   {
     question: "What should I bring with me?",
