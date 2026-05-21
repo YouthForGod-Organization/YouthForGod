@@ -55,6 +55,8 @@ test.describe("Youth for God pages", () => {
     await expect(friday.getByText("Registration")).toBeVisible();
     await expect(friday.getByText("8:00 - 9:30 AM")).toBeVisible();
     await expect(friday.getByText("Coffee Cart Open")).toBeVisible();
+    await expect(saturday.getByText("8:00 AM")).toBeVisible();
+    await expect(saturday.getByText("Registration")).toBeVisible();
     await expect(saturday.getByText("8:00 - 9:30 AM")).toBeVisible();
     await expect(saturday.getByText("Coffee Cart Open")).toBeVisible();
     await expect(saturday.getByText("3:00 PM")).toBeVisible();
