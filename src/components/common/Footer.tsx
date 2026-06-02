@@ -1,14 +1,19 @@
 // Renders shared event branding, route shortcuts, and support contact details.
 import { Link } from "react-router-dom";
 import logo from "../../assets/updatedLogo2.png";
+import { showConferencePages } from "../../config/featureFlags";
 import "./Footer.scss";
 
 const quickLinks = [
   { label: "Home", to: "/" },
-  { label: "Speakers", to: "/speakers" },
-  { label: "Schedule", to: "/schedule" },
+  ...(showConferencePages
+    ? [
+        { label: "Speakers", to: "/speakers" },
+        { label: "Schedule", to: "/schedule" },
+      ]
+    : []),
   { label: "Media", to: "/media" },
-  { label: "Register", to: "/register" },
+  ...(showConferencePages ? [{ label: "Register", to: "/register" }] : []),
 ];
 
 const contactDetails = [

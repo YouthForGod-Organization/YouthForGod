@@ -1,6 +1,6 @@
 # YouthForGod
 
-Youth for God is a React single-page conference site for the 2026 "Solus Christus" event. The app ships a landing page, schedule, speakers, media archive, FAQ, and registration flow with a mobile-first presentation.
+Youth for God is a React single-page conference site for the 2026 "Solus Christus" event. The app currently ships the landing page and media archive by default, with schedule, speakers, FAQ, and registration pages held behind a conference-planning feature flag.
 
 ## Stack
 
@@ -13,11 +13,28 @@ Youth for God is a React single-page conference site for the 2026 "Solus Christu
 ## App Routes
 
 - `/` renders the landing page, promo video, event summary, and media archive CTA.
-- `/schedule` renders the conference schedule cards for Friday and Saturday.
-- `/speakers` renders the featured speaker roster.
 - `/media` renders the 2026 sermon and music video archive.
-- `/faq` renders collapsible attendee guidance, refund deadline details, and support links.
-- `/register` renders pricing details, refund deadline disclaimer, and the hosted registration iframe.
+- `/schedule` renders the conference schedule cards for Friday and Saturday when `YFG_SHOW_CONFERENCE_PAGES=true`.
+- `/speakers` renders the featured speaker roster when `YFG_SHOW_CONFERENCE_PAGES=true`.
+- `/faq` renders collapsible attendee guidance, refund deadline details, and support links when `YFG_SHOW_CONFERENCE_PAGES=true`.
+- `/register` renders pricing details, refund deadline disclaimer, and the hosted registration iframe when `YFG_SHOW_CONFERENCE_PAGES=true`.
+- When `YFG_SHOW_CONFERENCE_PAGES` is not enabled, `/schedule`, `/speakers`, `/faq`, and `/register` redirect to `/`.
+
+## Conference Page Flag
+
+The conference-planning pages are hidden by default because there is not an upcoming conference open for registration. To restore the schedule, speakers, FAQ, and registration routes for a future conference, set this environment variable at build time:
+
+```bash
+YFG_SHOW_CONFERENCE_PAGES=true npm run build
+```
+
+For local development, you can also add this to `.env`:
+
+```bash
+YFG_SHOW_CONFERENCE_PAGES=true
+```
+
+After changing `.env`, restart `npm start` or run a new build because webpack reads the flag when it starts. For hosting providers such as Netlify, set `YFG_SHOW_CONFERENCE_PAGES` to `true` in the site's environment variables and redeploy. Accepted true values are `true`, `1`, and `yes`.
 
 ## Project Layout
 

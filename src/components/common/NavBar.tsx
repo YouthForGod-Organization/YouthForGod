@@ -2,14 +2,19 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/updatedLogo2.png";
+import { showConferencePages } from "../../config/featureFlags";
 import "./NavBar.scss";
 
 const navLinks = [
   { label: "Home", to: "/", end: true },
-  { label: "Speakers", to: "/speakers" },
-  { label: "Schedule", to: "/schedule" },
+  ...(showConferencePages
+    ? [
+        { label: "Speakers", to: "/speakers" },
+        { label: "Schedule", to: "/schedule" },
+      ]
+    : []),
   { label: "Media", to: "/media" },
-  { label: "FAQ", to: "/faq" },
+  ...(showConferencePages ? [{ label: "FAQ", to: "/faq" }] : []),
 ];
 
 export function NavBar() {
@@ -53,9 +58,11 @@ export function NavBar() {
               {link.label}
             </NavLink>
           ))}
-          <Link className="nav__cta" to="/register" onClick={closeMenu}>
-            Register
-          </Link>
+          {showConferencePages && (
+            <Link className="nav__cta" to="/register" onClick={closeMenu}>
+              Register
+            </Link>
+          )}
         </nav>
       </div>
     </header>

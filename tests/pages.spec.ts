@@ -1,5 +1,8 @@
 // Exercises the routed user experience on desktop and mobile viewports.
 import { expect, test } from "@playwright/test";
+import { config as loadEnv } from "dotenv";
+
+loadEnv({ path: process.env.DOTENV_CONFIG_PATH || ".env", quiet: true });
 
 const routes = {
   landing: "/",
@@ -10,6 +13,20 @@ const routes = {
   registration: "/register",
 };
 
+const hiddenConferenceRoutes = [
+  routes.schedule,
+  routes.speakers,
+  routes.faq,
+  routes.registration,
+];
+
+const conferenceRouteHeadings = [
+  { route: routes.schedule, heading: /^Schedule$/i },
+  { route: routes.speakers, heading: /^Speakers$/i },
+  { route: routes.faq, heading: /Frequently Asked Questions/i },
+  { route: routes.registration, heading: /Secure Your Spot/i },
+];
+
 const speakerNames = [
   "Benjamin Baljic",
   "Konstantin Neyman",
@@ -17,6 +34,12 @@ const speakerNames = [
   "Daniel Clark",
   "Stepan Misiruk",
 ];
+
+const showConferencePages = ["1", "true", "yes"].includes(
+  String(process.env.YFG_SHOW_CONFERENCE_PAGES || "").toLowerCase()
+);
+
+const conferenceOnlyTest = showConferencePages ? test : test.skip;
 
 test.describe("Youth for God pages", () => {
   test("landing page shows the event theme, promo media, and media CTA", async ({ page }) => {
@@ -40,7 +63,24 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByRole("heading", { name: /2026 Conference Media/i })).toBeVisible();
   });
 
-  test("schedule page lists both conference days and key session times", async ({ page }) => {
+  test("conference planning navigation follows the feature flag", async ({ page }) => {
+    await page.goto(routes.landing);
+
+    const header = page.locator("header");
+    const footer = page.locator("footer");
+
+    const expectedLinkCount = showConferencePages ? 1 : 0;
+
+    await expect(header.getByRole("link", { name: /^Speakers$/i })).toHaveCount(expectedLinkCount);
+    await expect(header.getByRole("link", { name: /^Schedule$/i })).toHaveCount(expectedLinkCount);
+    await expect(header.getByRole("link", { name: /^FAQ$/i })).toHaveCount(expectedLinkCount);
+    await expect(header.getByRole("link", { name: /^Register$/i })).toHaveCount(expectedLinkCount);
+    await expect(footer.getByRole("link", { name: /^Speakers$/i })).toHaveCount(expectedLinkCount);
+    await expect(footer.getByRole("link", { name: /^Schedule$/i })).toHaveCount(expectedLinkCount);
+    await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(expectedLinkCount);
+  });
+
+  conferenceOnlyTest("schedule page lists both conference days and key session times", async ({ page }) => {
     await page.goto(routes.schedule);
 
     await expect(page.getByRole("heading", { name: /^Schedule$/i })).toBeVisible();
@@ -67,7 +107,7 @@ test.describe("Youth for God pages", () => {
     await expect(saturday.getByText(/Park \/ Dinner/i)).toBeVisible();
   });
 
-  test("speakers page renders the full featured speaker roster", async ({ page }) => {
+  conferenceOnlyTest("speakers page renders the full featured speaker roster", async ({ page }) => {
     await page.goto(routes.speakers);
 
     await expect(page.getByRole("heading", { name: /^Speakers$/i })).toBeVisible();
@@ -111,7 +151,25 @@ test.describe("Youth for God pages", () => {
     ).toHaveAttribute("href", "https://www.youtube.com/watch?v=hnFKywbVMAU");
   });
 
-  test("FAQ page expands logistics guidance and exposes support links", async ({ page }) => {
+  test("direct conference route visits follow the feature flag", async ({ page }) => {
+    if (showConferencePages) {
+      for (const { route, heading } of conferenceRouteHeadings) {
+        await page.goto(route);
+
+        await expect(page).toHaveURL(new RegExp(`${route}$`));
+        await expect(page.getByRole("heading", { name: heading })).toBeVisible();
+      }
+    } else {
+      for (const hiddenRoute of hiddenConferenceRoutes) {
+        await page.goto(hiddenRoute);
+
+        await expect(page).toHaveURL(/\/$/);
+        await expect(page.locator("#home.yfg-hero")).toBeVisible();
+      }
+    }
+  });
+
+  conferenceOnlyTest("FAQ page expands logistics guidance and exposes support links", async ({ page }) => {
     await page.goto(routes.faq);
 
     await expect(page.getByRole("heading", { name: /Frequently Asked Questions/i })).toBeVisible();
@@ -142,7 +200,7 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByText(/same-day registration will still be available for \$60/i)).toBeVisible();
   });
 
-  test("registration page shows event details and the hosted embed", async ({ page }) => {
+  conferenceOnlyTest("registration page shows event details and the hosted embed", async ({ page }) => {
     await page.goto(routes.registration, { waitUntil: "domcontentloaded" });
 
     await expect(page.getByRole("heading", { name: /Secure Your Spot/i })).toBeVisible();
@@ -155,13 +213,15 @@ test.describe("Youth for God pages", () => {
   });
 
   test("shared footer keeps quick links and support contact available on interior pages", async ({ page }) => {
-    await page.goto(routes.speakers);
+    await page.goto(routes.media);
 
     const footer = page.locator("footer");
 
     await expect(footer.getByRole("link", { name: /^Home$/i })).toBeVisible();
     await expect(footer.getByRole("link", { name: /^Media$/i })).toBeVisible();
-    await expect(footer.getByRole("link", { name: /^Register$/i })).toBeVisible();
+    await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(
+      showConferencePages ? 1 : 0
+    );
     await expect(footer.getByRole("link", { name: /contact@youth4god.org/i })).toHaveAttribute(
       "href",
       "mailto:contact@youth4god.org"

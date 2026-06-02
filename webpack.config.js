@@ -1,7 +1,18 @@
 // Bundles the React single-page app, shared styles, and static media assets.
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { config: loadEnv } = require("dotenv");
+
+loadEnv({
+  path: process.env.DOTENV_CONFIG_PATH || path.resolve(__dirname, ".env"),
+  quiet: true,
+});
+
+const showConferencePages = ["1", "true", "yes"].includes(
+  String(process.env.YFG_SHOW_CONFERENCE_PAGES || "").toLowerCase()
+);
 
 module.exports = {
   entry: path.resolve(__dirname, "src/index.tsx"),
@@ -54,6 +65,9 @@ module.exports = {
           },
         },
       ],
+    }),
+    new webpack.DefinePlugin({
+      __YFG_SHOW_CONFERENCE_PAGES__: JSON.stringify(showConferencePages),
     }),
   ],
   devServer: {
