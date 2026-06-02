@@ -44,8 +44,8 @@ export function Landing() {
             />
           </picture>
           <div className="yfg-container yfg-hero__cta">
-            <Link className="yfg-btn yfg-btn--primary" to="/register">
-              Register Now
+            <Link className="yfg-btn yfg-btn--primary" to="/media">
+              View Media
             </Link>
           </div>
         </section>

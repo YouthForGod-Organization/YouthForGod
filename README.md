@@ -1,6 +1,6 @@
 # YouthForGod
 
-Youth for God is a React single-page conference site for the 2026 "Solus Christus" event. The app ships a landing page, schedule, speakers, FAQ, and registration flow with a mobile-first presentation.
+Youth for God is a React single-page conference site for the 2026 "Solus Christus" event. The app ships a landing page, schedule, speakers, media archive, FAQ, and registration flow with a mobile-first presentation.
 
 ## Stack
 
@@ -12,9 +12,10 @@ Youth for God is a React single-page conference site for the 2026 "Solus Christu
 
 ## App Routes
 
-- `/` renders the landing page, promo video, and event summary.
+- `/` renders the landing page, promo video, event summary, and media archive CTA.
 - `/schedule` renders the conference schedule cards for Friday and Saturday.
 - `/speakers` renders the featured speaker roster.
+- `/media` renders the 2026 sermon and music video archive.
 - `/faq` renders collapsible attendee guidance, refund deadline details, and support links.
 - `/register` renders pricing details, refund deadline disclaimer, and the hosted registration iframe.
 

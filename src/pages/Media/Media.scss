@@ -1,0 +1,161 @@
+// Styles the conference media archive hero, sections, and responsive video cards.
+@use "../../styles/variables" as *;
+
+$ink: #1a1a1a;
+$ink-weak: #4b4b4b;
+$accent: #d4af37;
+$hero-bg: #f6f4ef;
+
+.media {
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+.media__hero {
+  text-align: center;
+  padding: clamp(64px, 12vw, 140px) clamp(20px, 6vw, 60px);
+  background: $hero-bg;
+  color: $ink;
+}
+
+.media__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: 0.78rem;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.media__hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  margin: 0.4em 0 0.4em;
+}
+
+.media__lead {
+  max-width: 720px;
+  margin: 0 auto;
+  color: $ink-weak;
+  line-height: 1.7;
+}
+
+.media__content {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 80px) clamp(20px, 6vw, 80px);
+  display: grid;
+  gap: clamp(48px, 7vw, 72px);
+}
+
+.media__section {
+  display: grid;
+  gap: clamp(20px, 3vw, 30px);
+}
+
+.media__section-header {
+  max-width: 720px;
+}
+
+.media__section-header h2 {
+  font-size: clamp(1.7rem, 4vw, 2.35rem);
+  margin: 0 0 0.5rem;
+}
+
+.media__section-header p {
+  margin: 0;
+  color: $ink-weak;
+  line-height: 1.65;
+}
+
+.media__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.media__card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.media__thumbnail-link {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #ece9df;
+}
+
+.media__thumbnail-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.media__thumbnail-link:hover img,
+.media__thumbnail-link:focus-visible img {
+  transform: scale(1.04);
+}
+
+.media__play {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 6px;
+  background: var(--color-accent-gold);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.media__card-body {
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.media__meta {
+  margin: 0 0 0.5rem;
+  color: rgba(0, 0, 0, 0.58);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.media__card h3 {
+  margin: 0;
+  color: $ink;
+  font-size: clamp(1.05rem, 3vw, 1.25rem);
+  line-height: 1.35;
+  text-transform: none;
+}
+
+.media__watch-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: var(--color-accent-gold-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (min-width: 680px) {
+  .media__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .media__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

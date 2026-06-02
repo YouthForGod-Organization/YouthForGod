@@ -69,6 +69,8 @@ List which docs need to be created or updated.
 
 Do not write production code until this plan exists.
 
+When approval is needed, ask before starting the full implementation plan rather than asking for every individual line, file, or small edit. Once the user approves the plan or explicitly asks for implementation, proceed through the planned edits without repeated confirmations. Still ask again before destructive actions, escalated commands, or meaningful work outside the approved scope.
+
 ### 3. Use Test-Driven Development
 
 For every feature, bug fix, refactor, or behavior change:
@@ -123,6 +125,8 @@ Known commands for this repository:
 - `npm run preview:test` builds and serves `dist` on port `4173` for Playwright.
 
 Do not invent commands if the repo already defines them.
+
+Do not start the local development server unless the user explicitly asks for it. The user will run `npm start` themselves when they want to preview the site locally.
 
 ### 5. Documentation Is Required
 

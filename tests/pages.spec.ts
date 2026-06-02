@@ -5,6 +5,7 @@ const routes = {
   landing: "/",
   schedule: "/schedule",
   speakers: "/speakers",
+  media: "/media",
   faq: "/faq",
   registration: "/register",
 };
@@ -18,22 +19,25 @@ const speakerNames = [
 ];
 
 test.describe("Youth for God pages", () => {
-  test("landing page shows the event theme, promo media, and registration CTA", async ({ page }) => {
+  test("landing page shows the event theme, promo media, and media CTA", async ({ page }) => {
     await page.goto(routes.landing);
 
     await expect(page.locator("#home.yfg-hero")).toBeVisible();
-    await expect(page.getByRole("link", { name: /Register Now/i })).toBeVisible();
+    const mediaCta = page.locator(".yfg-hero").getByRole("link", { name: /View Media/i });
+    await expect(mediaCta).toBeVisible();
+    await expect(mediaCta).toHaveCSS("animation-name", "yfg-media-cta-jump");
+    await expect(page.locator(".yfg-hero").getByRole("link", { name: /Register Now/i })).toHaveCount(0);
     await expect(page.getByLabel(/Youth for God promo video/i)).toBeVisible();
     await expect(page.getByText(/John 14:6/i)).toBeVisible();
   });
 
-  test("landing page CTA routes visitors to registration", async ({ page }) => {
+  test("landing page CTA routes visitors to media", async ({ page }) => {
     await page.goto(routes.landing);
 
-    await page.getByRole("link", { name: /Register Now/i }).click();
+    await page.locator(".yfg-hero").getByRole("link", { name: /View Media/i }).click();
 
-    await expect(page).toHaveURL(/\/register$/);
-    await expect(page.getByRole("heading", { name: /Secure Your Spot/i })).toBeVisible();
+    await expect(page).toHaveURL(/\/media$/);
+    await expect(page.getByRole("heading", { name: /2026 Conference Media/i })).toBeVisible();
   });
 
   test("schedule page lists both conference days and key session times", async ({ page }) => {
@@ -72,6 +76,39 @@ test.describe("Youth for God pages", () => {
     for (const speakerName of speakerNames) {
       await expect(page.getByRole("heading", { name: speakerName })).toBeVisible();
     }
+  });
+
+  test("media page separates conference sermons and music videos", async ({ page }) => {
+    await page.goto(routes.media);
+
+    await expect(page.getByRole("heading", { name: /2026 Conference Media/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /^Sermons$/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /^Music Videos$/i })).toBeVisible();
+
+    const sermons = page.locator(".media__section").filter({
+      has: page.getByRole("heading", { name: /^Sermons$/i }),
+    });
+    const music = page.locator(".media__section").filter({
+      has: page.getByRole("heading", { name: /^Music Videos$/i }),
+    });
+
+    await expect(sermons.getByRole("heading", { name: /Христос в истории/i })).toBeVisible();
+    await expect(sermons.getByRole("heading", { name: /Христос - Пророк/i })).toBeVisible();
+    await expect(
+      sermons.getByRole("link", { name: /Watch Христос в истории on YouTube/i })
+    ).toHaveAttribute("href", "https://www.youtube.com/watch?v=xKLiXmKJbxg");
+
+    await expect(music.getByRole("heading", { name: /Jesus - There's Just Something About That Name/i })).toBeVisible();
+    await expect(music.getByRole("heading", { name: /Ты вошел в жизнь мою/i })).toBeVisible();
+    await expect(music.getByRole("heading", { name: /Господи, услыши/i })).toBeVisible();
+    await expect(
+      music.getByRole("link", { name: /Watch Господи, услыши on YouTube/i })
+    ).toHaveAttribute("href", "https://www.youtube.com/watch?v=ZHEvi9W7sww");
+    await expect(music.getByRole("heading", { name: /Ты достоин принять всю славу и честь/i })).toBeVisible();
+    await expect(music.getByRole("heading", { name: /Кто приносит в жертву хвалу/i })).toBeVisible();
+    await expect(
+      music.getByRole("link", { name: /Watch Кто приносит в жертву хвалу on YouTube/i })
+    ).toHaveAttribute("href", "https://www.youtube.com/watch?v=hnFKywbVMAU");
   });
 
   test("FAQ page expands logistics guidance and exposes support links", async ({ page }) => {
@@ -123,6 +160,7 @@ test.describe("Youth for God pages", () => {
     const footer = page.locator("footer");
 
     await expect(footer.getByRole("link", { name: /^Home$/i })).toBeVisible();
+    await expect(footer.getByRole("link", { name: /^Media$/i })).toBeVisible();
     await expect(footer.getByRole("link", { name: /^Register$/i })).toBeVisible();
     await expect(footer.getByRole("link", { name: /contact@youth4god.org/i })).toHaveAttribute(
       "href",

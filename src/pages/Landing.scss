@@ -73,12 +73,42 @@ $accent: #c09b3c;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
+.yfg-hero__cta .yfg-btn--primary {
+  animation: yfg-media-cta-jump 2.4s ease-in-out infinite;
+}
+
 .yfg-btn--primary:hover,
 .yfg-btn--primary:focus-visible {
   background: color.adjust($accent, $lightness: -5%);
   color: $ink;
   transform: translateY(-2px);
   box-shadow: 0 24px 46px rgba(0, 0, 0, 0.28);
+}
+
+@keyframes yfg-media-cta-jump {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+
+  78% {
+    transform: translateY(-9px);
+  }
+
+  86% {
+    transform: translateY(0);
+  }
+
+  93% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yfg-hero__cta .yfg-btn--primary {
+    animation: none;
+  }
 }
 
 .yfg-container {
