@@ -1,11 +1,12 @@
 // Summarizes registration details and embeds the hosted event checkout flow.
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { conference } from "../../data/conference";
 import "./Registration.scss";
 
 const eventHighlights = [
-  { label: "Dates", value: "May 22 – 23, 2026" },
-  { label: "Location", value: "Sacramento, California" },
+  { label: "Dates", value: conference.dates },
+  { label: "Location", value: conference.location },
 ];
 
 const supportItems = [
@@ -31,7 +32,7 @@ export function RegistrationPage() {
       <Header />
       <main className="registration">
         <section className="registration__hero">
-          <p className="registration__eyebrow">Youth for God Conference 2026</p>
+          <p className="registration__eyebrow">Youth for God Conference {conference.year}</p>
           <h1>Secure Your Spot</h1>
           <div className="registration__highlights">
             {eventHighlights.map((item) => (
@@ -50,7 +51,7 @@ export function RegistrationPage() {
         <section className="registration__form">
           <div className="container">
             <p className="registration__refund-disclaimer">
-              Refund Deadline: Thursday, May 21 at 11:59 PM
+              Please review current pricing, registration deadlines and refund terms in the registration form.
             </p>
             <div className="registration__frame-wrapper">
               <iframe

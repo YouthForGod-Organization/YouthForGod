@@ -7,79 +7,43 @@ import "./FAQ.scss";
 const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Where will the Y4G conference be held?",
-    answer: (
-      <>
-        We're excited to welcome you to Bryte Church, conveniently located at{" "}
-        <a href="https://goo.gl/maps/fVaEyTs1riJMEuBk6">
-          1000 Sacramento Ave, West Sacramento, CA
-        </a>
-        . We can't wait to see you there!
-      </>
-    ),
+    answer: "Bible Baptist Church, Citrus Heights, CA",
   },
   {
     question: "What are the dates for Y4G conference?",
-    answer:
-      "Mark your calendars! The conference kicks off on Friday, May 22 and wraps up on Saturday, May 23. We recommend checking the website regularly for any schedule updates and plan to arrive early so you can check in smoothly and grab a great seat!",
+    answer: "Friday, May 28 and Saturday, May 29, 2027. Registration begins at 5:00 PM on Friday and 7:00 AM on Saturday.",
   },
   {
-    question: "Who can attend the conference?",
-    answer:
-      "The conference is open to all youth who have registered and purchased a ticket. We'd love to have you join us!",
+    question: "What is the conference theme?",
+    answer: "Living as the Light. The teaching theme, ‘You – a lit’L Christian?’, asks what it means to be light in the Lord and walk as children of light (Ephesians 5:8).",
   },
   {
-    question: "Do I need to register ahead of time?",
-    answer: (
-      <>
-        We highly recommend that all attendees register ahead of time. Early
-        registration greatly helps us with preparation and planning, so please
-        sign up in advance to secure your spot. However, we will still be able
-        to accept <strong>same-day registrations</strong> for those who may have
-        missed the opportunity to register online.
-      </>
-    ),
+    question: "Who will be speaking?",
+    answer: "Roman Balatskiy, Daniel Clark, Ivan Dzyuba and Andrey Sentsov, with one additional speaker to be announced. Daniel Clark will teach Session I. The remaining session assignments are to be announced.",
   },
   {
-    question:
-      "Will registration prices change as we get closer to the conference?",
-    answer: (
-      <>
-        No. <strong>Same-day registration remains $60</strong>, so there is{" "}
-        <strong>no day-of upcharge</strong> for registering when you arrive. We
-        still recommend registering ahead of time because it helps us plan for
-        attendance, check-in, and meals.
-      </>
-    ),
+    question: "How do I register, and what does it cost?",
+    answer: <>Visit the <a href="/register">registration page</a> for the current 2027 registration form and pricing.</>,
   },
   {
-    question: "Can I get a refund if I cancel my registration?",
-    answer:
-      "We understand that plans can change! Refund requests must be submitted by Thursday, May 21 at 11:59 PM. This is a strict deadline. Please reach out to this email to get a refund issued.",
+    question: "What are the registration and refund deadlines?",
+    answer: "Please check the current registration form for deadlines and refund terms, or email contact@youth4god.org for help.",
   },
   {
     question: "What should I bring with me?",
-    answer:
-      "Here's what we recommend: your Bible, a notebook for taking notes, a water bottle to stay hydrated, and most importantly, an open heart ready to receive God's word!",
+    answer: "Bring your Bible, a notebook for taking notes, and a water bottle.",
   },
   {
     question: "Will food be provided?",
-    answer:
-      "Yes! We'll be providing lunch both days and dinner only Saturday at the park. However, if you have specific dietary restrictions or allergies, please plan to bring your own accommodations to ensure your needs are met.",
+    answer: "The schedule includes Friday tea from 8:30 to 10:00 PM, Saturday lunch at 12:30 PM and supper at 6:00 PM. Contact the team for meal arrangements and dietary questions.",
   },
   {
     question: "Are hotels provided?",
-    answer:
-      "Lodging is not included in your registration, but we're happy to provide a list of nearby hotel options if you need one. We also encourage you to connect with fellow youth members who may be able to host you, it's a great way to build fellowship!",
+    answer: "Please contact the team for 2027 lodging information.",
   },
   {
     question: "Who do I contact for additional questions?",
-    answer:
-      "We're here to help! Please reach out via email if you have any questions or need more information. We'll get back to you as soon as possible!",
-  },
-  {
-    question: "When is the deadline for registering for the conference?",
-    answer:
-      "Online registration closes March 31st, so please sign up early when possible. If you miss that deadline, same-day registration will still be available for $60 when you arrive at the conference.",
+    answer: "Email contact@youth4god.org for conference questions and registration support.",
   },
 ];
 
@@ -117,8 +81,8 @@ export function FAQPage() {
         <section className="faq__help">
           <h2>Need more help?</h2>
           <p>
-            Our team replies within 24 hours. For urgent needs during the event
-            weekend, call the onsite hotline listed in your confirmation email.
+            Contact our team for conference details, registration questions,
+            meal arrangements and lodging information.
           </p>
           <div className="faq__help-links">
             {helpLinks.map((link) => (

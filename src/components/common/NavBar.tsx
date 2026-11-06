@@ -60,7 +60,7 @@ export function NavBar() {
           ))}
           {showConferencePages && (
             <Link className="nav__cta" to="/register" onClick={closeMenu}>
-              Register
+              Register <span className="nav__cta-arrow" aria-hidden="true">↗</span>
             </Link>
           )}
         </nav>

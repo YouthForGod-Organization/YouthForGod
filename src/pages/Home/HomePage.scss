@@ -14,7 +14,7 @@
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25)),
     url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80")
       center/cover;
-  color: var(--color-pure-white);
+  color: var(--color-background);
 }
 
 .home__hero-inner {
@@ -39,7 +39,7 @@
 .home__hero h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   margin-bottom: 1rem;
-  color: var(--color-pure-white);
+  color: var(--color-background);
 }
 
 .home__lead {
@@ -79,24 +79,24 @@
 }
 
 .btn--primary {
-  background: var(--color-accent-gold);
-  color: var(--color-pure-white);
+  background: var(--color-accent);
+  color: var(--color-background);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .btn--primary:hover {
-  background: var(--color-accent-gold-dark);
+  background: var(--color-accent-hover);
 }
 
 .btn--ghost {
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  color: var(--color-pure-white);
+
+  color: var(--color-background);
 }
 
 .btn--full {
   width: 100%;
-  background: var(--color-primary-black);
-  color: var(--color-pure-white);
+  background: var(--color-ink);
+  color: var(--color-background);
   margin-top: 1rem;
 }
 
@@ -113,7 +113,7 @@
   font-family: v.$font-heading;
   letter-spacing: 0.4em;
   font-size: 0.7rem;
-  color: var(--color-primary-black);
+  color: var(--color-ink);
 }
 
 .home__section-header h2 {
@@ -122,7 +122,7 @@
 }
 
 .home__about {
-  background: var(--color-light-gray);
+  background: var(--color-sage);
   border-radius: 1.5rem;
   padding: clamp(2rem, 5vw, 3rem);
 }
@@ -135,8 +135,8 @@
 .home__about-grid article {
   padding: 1.75rem;
   border-radius: 1rem;
-  background: var(--color-pure-white);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--color-background);
+
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -154,22 +154,22 @@
 .home__detail-card {
   padding: 1.5rem;
   border-radius: 1rem;
-  background: var(--color-light-gray);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: var(--color-sage);
+
 }
 
 .home__detail-label {
   font-family: v.$font-heading;
   letter-spacing: 0.3em;
   font-size: 0.68rem;
-  color: var(--color-primary-black);
+  color: var(--color-ink);
   margin-bottom: 0.5rem;
 }
 
 .home__detail-value {
   font-size: 1.15rem;
   margin: 0;
-  color: var(--color-charcoal);
+  color: var(--color-text);
 }
 
 @include respond(md) {
@@ -204,7 +204,7 @@
 .home__promo-video {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: none;
+
   border-radius: var(--radius-base);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   background: #000;

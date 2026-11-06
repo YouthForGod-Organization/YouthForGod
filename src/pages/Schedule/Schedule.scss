@@ -1,107 +1,74 @@
-// Styles the schedule hero and card-based daily agenda layout.
+// Both existing conference days remain visible in ruled agenda sections.
 @use "../../styles/variables" as *;
-
-$ink: #1a1a1a;
-$ink-weak: #444;
-$accent: #d4af37;
-$hero-bg: #f6f4ef;
-
-.schedule {
-  background: #ffffff;
-  min-height: 100vh;
-}
-
-.schedule__hero {
-  text-align: center;
-  padding: clamp(64px, 12vw, 140px) clamp(20px, 6vw, 60px);
-  background: $hero-bg;
-  color: $ink;
-}
-
-.schedule__hero h1 {
-  font-size: clamp(2.5rem, 6vw, 3.75rem);
-  margin: 0.35em 0 0.5em;
-}
-
-.schedule__lead {
-  max-width: 700px;
-  margin: 0 auto;
-  color: $ink-weak;
-  line-height: 1.7;
-}
-
-.schedule__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.4em;
-  font-size: 0.78rem;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.schedule__table {
-  padding: clamp(32px, 6vw, 80px) clamp(20px, 6vw, 60px);
-}
-
+@use "../../styles/page-hero";
+@include page-hero.styles("schedule");
 .schedule__cards {
-  width: min(1100px, 100%);
+  width: min(var(--layout-max-width), 100%);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding-top: 50px;
-}
-
-.schedule__card {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: clamp(32px, 5vw, 72px) var(--page-gutter);
+  display: grid;
+  gap: 48px;
 }
 
 .schedule__card-header {
-  margin-bottom: 1rem;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-divider);
+
 }
 
 .schedule__card-header h2 {
-  margin: 0.15rem 0 0;
-  font-size: 1.6rem;
-  letter-spacing: 0.08em;
+  color: var(--color-ink);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
 }
 
 .schedule__card-eyebrow {
-  margin: 0;
+  margin: 0 0 12px;
+  color: var(--color-ink);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.78rem;
-  color: rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
 }
 
 .schedule__slots {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
 }
 
 .schedule__slot {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.8rem 1rem;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.02);
+  display: grid;
+  grid-template-columns: minmax(90px, 1fr) minmax(0, 2fr);
+  gap: 20px;
+  align-items: baseline;
+  padding: 24px 0;
+
+}
+
+.schedule__slot:hover {
+  background: var(--color-surface);
 }
 
 .schedule__slot-time {
+  font-family: $font-heading;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: $ink;
-  min-width: 110px;
+  font-size: clamp(1rem, 2.4vw, 2rem);
+  font-variant-numeric: tabular-nums;
 }
 
 .schedule__slot-activity {
-  color: $ink-weak;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+}
+
+.schedule__slot-content {
+  min-width: 0;
+}
+.schedule__slot-activity {
+  margin: 0;
+  font-weight: 600;
+}
+
+.schedule__slot + .schedule__slot {
+  border-top: 1px solid var(--color-divider);
 }

@@ -28,11 +28,10 @@ const conferenceRouteHeadings = [
 ];
 
 const speakerNames = [
-  "Benjamin Baljic",
-  "Konstantin Neyman",
   "Roman Balatskiy",
   "Daniel Clark",
-  "Stepan Misiruk",
+  "Ivan Dzyuba",
+  "Andrey Sentsov",
 ];
 
 const showConferencePages = ["1", "true", "yes"].includes(
@@ -42,29 +41,38 @@ const showConferencePages = ["1", "true", "yes"].includes(
 const conferenceOnlyTest = showConferencePages ? test : test.skip;
 
 test.describe("Youth for God pages", () => {
-  test("landing page shows the event theme, promo media, and media CTA", async ({ page }) => {
+  test("landing page opens with artwork and retains promo media", async ({ page, isMobile }) => {
     await page.goto(routes.landing);
 
     await expect(page.locator("#home.yfg-hero")).toBeVisible();
-    const mediaCta = page.locator(".yfg-hero").getByRole("link", { name: /View Media/i });
-    await expect(mediaCta).toBeVisible();
-    await expect(mediaCta).toHaveCSS("animation-name", "yfg-media-cta-jump");
-    await expect(page.locator(".yfg-hero").getByRole("link", { name: /Register Now/i })).toHaveCount(0);
+    const artwork = page.getByRole("img", { name: "Living as the Light — Ephesians 5:8. Youth for God, May 28–29, 2027." });
+    await expect(artwork).toBeVisible();
+    await expect.poll(() => artwork.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+    await expect.poll(() => artwork.evaluate((img: HTMLImageElement) => img.currentSrc)).toContain(
+      isMobile ? "/living-as-the-light-hero-mobile.jpg" : "/living-as-the-light-hero.jpg"
+    );
+    const artworkBox = await artwork.boundingBox();
+    expect(artworkBox!.width / artworkBox!.height).toBeCloseTo(isMobile ? 9 / 16 : 16 / 9, 2);
+    await expect(page.locator(".yfg-hero__intro")).toHaveCount(0);
+    await expect(page.locator(".yfg-hero").getByRole("link", { name: /View Media/i })).toHaveCount(0);
     await expect(page.getByLabel(/Youth for God promo video/i)).toBeVisible();
-    await expect(page.getByText(/John 14:6/i)).toBeVisible();
+    await expect(page.getByText("Ephesians 5:8", { exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Youth For God Conference 2027" })).toBeVisible();
   });
 
-  test("landing page CTA routes visitors to media", async ({ page }) => {
+  test("landing page navigation routes visitors to media", async ({ page, isMobile }) => {
     await page.goto(routes.landing);
 
-    await page.locator(".yfg-hero").getByRole("link", { name: /View Media/i }).click();
+    if (isMobile) await page.getByRole("button", { name: "Toggle menu" }).click();
+    await page.locator("header").getByRole("link", { name: "Media", exact: true }).click();
 
     await expect(page).toHaveURL(/\/media$/);
     await expect(page.getByRole("heading", { name: /2026 Conference Media/i })).toBeVisible();
   });
 
-  test("conference planning navigation follows the feature flag", async ({ page }) => {
+  test("conference planning navigation follows the feature flag", async ({ page, isMobile }) => {
     await page.goto(routes.landing);
+    if (isMobile) await page.getByRole("button", { name: "Toggle menu" }).click();
 
     const header = page.locator("header");
     const footer = page.locator("footer");
@@ -84,7 +92,7 @@ test.describe("Youth for God pages", () => {
     await page.goto(routes.schedule);
 
     await expect(page.getByRole("heading", { name: /^Schedule$/i })).toBeVisible();
-    await expect(page.getByText(/May 22 – 23 · Sacramento/i)).toBeVisible();
+    await expect(page.getByText(/May 28 – 29, 2027 · Citrus Heights/i)).toBeVisible();
     await expect(page.getByRole("heading", { name: /^Friday$/i })).toBeVisible();
     await expect(page.getByRole("heading", { name: /^Saturday$/i })).toBeVisible();
 
@@ -95,16 +103,18 @@ test.describe("Youth for God pages", () => {
       has: page.getByRole("heading", { name: /^Saturday$/i }),
     });
 
-    await expect(friday.getByText("8:00 AM")).toBeVisible();
-    await expect(friday.getByText("Registration")).toBeVisible();
-    await expect(friday.getByText("8:00 - 9:30 AM")).toBeVisible();
-    await expect(friday.getByText("Coffee Cart Open")).toBeVisible();
-    await expect(saturday.getByText("8:00 AM")).toBeVisible();
-    await expect(saturday.getByText("Registration")).toBeVisible();
-    await expect(saturday.getByText("8:00 - 9:30 AM")).toBeVisible();
-    await expect(saturday.getByText("Coffee Cart Open")).toBeVisible();
-    await expect(saturday.getByText("3:00 PM")).toBeVisible();
-    await expect(saturday.getByText(/Park \/ Dinner/i)).toBeVisible();
+    await expect(friday.getByText("5:00 PM", { exact: true })).toBeVisible();
+    await expect(friday.getByText("Session I · Introduction", { exact: true })).toBeVisible();
+    await expect(friday.getByText("8:30 – 10:00 PM")).toBeVisible();
+    await expect(saturday.getByText("7:00 AM", { exact: true })).toBeVisible();
+    for (const title of ["Expose the works of Darkness", "The best use of Time", "Be filled with the Spirit", "Be imitators of God"]) {
+      await expect(saturday.getByText(title, { exact: false })).toBeVisible();
+    }
+    await expect(saturday.getByText("12:30 PM", { exact: true })).toBeVisible();
+    await expect(saturday.getByText("7:00 – 9:00 PM")).toBeVisible();
+    await expect(saturday.getByText("Bonfire", { exact: true })).toBeVisible();
+    await expect(page.locator(".schedule__session-meta, .schedule__session-summary, .schedule__session-texts")).toHaveCount(0);
+    await expect(page.getByText(/Speaker to be assigned|Supporting texts:|45 ± 5 minutes/)).toHaveCount(0);
   });
 
   conferenceOnlyTest("speakers page renders the full featured speaker roster", async ({ page }) => {
@@ -177,39 +187,22 @@ test.describe("Youth for God pages", () => {
     const venueQuestion = page.getByText("Where will the Y4G conference be held?");
     await venueQuestion.click();
 
-    await expect(page.getByRole("link", { name: /1000 Sacramento Ave, West Sacramento, CA/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /Email Support/i })).toHaveAttribute(
-      "href",
-      "mailto:contact@youth4god.org"
-    );
-
-    await page.getByText("Will registration prices change as we get closer to the conference?").click();
-    await expect(page.getByText(/same-day registration remains \$60/i)).toBeVisible();
-    await expect(page.getByText(/no day-of upcharge/i)).toBeVisible();
-
-    await page.getByText("Can I get a refund if I cancel my registration?").click();
-    await expect(page.getByText(/Thursday, May 21 at 11:59 PM/i)).toBeVisible();
-    await expect(page.getByText(/strict deadline/i)).toBeVisible();
-
+    await expect(page.getByText("Bible Baptist Church, Citrus Heights, CA", { exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Email Support/i })).toHaveAttribute("href", "mailto:contact@youth4god.org");
+    await page.getByText("What are the dates for Y4G conference?").click();
+    await expect(page.getByText(/Friday, May 28 and Saturday, May 29, 2027/)).toBeVisible();
     await page.getByText("Will food be provided?").click();
-    await expect(page.getByText(/providing lunch both days and dinner only Saturday at the park/i)).toBeVisible();
-    await expect(page.getByText(/dietary restrictions or allergies/i)).toBeVisible();
-
-    await page.getByText("When is the deadline for registering for the conference?").click();
-    await expect(page.getByText(/online registration closes March 31st/i)).toBeVisible();
-    await expect(page.getByText(/same-day registration will still be available for \$60/i)).toBeVisible();
+    await expect(page.getByText(/Saturday lunch at 12:30 PM and supper at 6:00 PM/)).toBeVisible();
+    await expect(page.getByText(/same-day registration remains \$60|March 31st|Thursday, May 21/i)).toHaveCount(0);
   });
 
-  conferenceOnlyTest("registration page shows event details and the hosted embed", async ({ page }) => {
+  conferenceOnlyTest("registration page shows current event details", async ({ page }) => {
     await page.goto(routes.registration, { waitUntil: "domcontentloaded" });
-
     await expect(page.getByRole("heading", { name: /Secure Your Spot/i })).toBeVisible();
-    await expect(page.getByText(/May 22 – 23, 2026/i)).toBeVisible();
-    await expect(page.getByText(/Sacramento, California/i)).toBeVisible();
-    const refundDeadline = page.getByText("Refund Deadline: Thursday, May 21 at 11:59 PM");
-    await expect(refundDeadline).toBeVisible();
-    await expect(refundDeadline).toHaveCSS("text-align", "center");
-    await expect(page.locator('iframe[title*="Registration" i]')).toBeVisible();
+    await expect(page.getByText("May 28 – 29, 2027", { exact: true })).toBeVisible();
+    await expect(page.getByText(/Bible Baptist Church, Citrus Heights/)).toBeVisible();
+    await expect(page.getByText(/Thursday, May 21/)).toHaveCount(0);
+    await expect(page.locator('iframe[title*="Registration"]')).toHaveAttribute("src", "https://subsplash.com/bbc-ca/lb/ev/+pn3qtnr/register");
   });
 
   test("shared footer keeps quick links and support contact available on interior pages", async ({ page }) => {
@@ -231,4 +224,30 @@ test.describe("Youth for God pages", () => {
       "https://www.instagram.com/youth4godcon/"
     );
   });
+});
+
+
+test("redesigned pages preserve branding and fit the viewport", async ({ page }, testInfo) => {
+  const visibleRoutes = showConferencePages ? Object.values(routes) : ["/", "/media"];
+  for (const route of visibleRoutes) {
+    await page.goto(route, { waitUntil: "domcontentloaded" });
+    await expect(page.locator("header img[alt='Youth for God']")).toBeVisible();
+    await expect(page.locator("footer img[alt='Youth for God']")).toBeVisible();
+    await expect(page.locator("footer")).toContainText("Sacramento, CA");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    if (process.env.YFG_CAPTURE_SCREENSHOTS === "true") {
+      await page.screenshot({ path: testInfo.outputPath(`${route.replaceAll("/", "") || "home"}.png`), fullPage: true });
+    }
+  }
+});
+
+test("mobile navigation opens and closes after following a link", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "Mobile menu only");
+  await page.goto("/");
+  const toggle = page.getByRole("button", { name: "Toggle menu" });
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await page.locator("header").getByRole("link", { name: "Media", exact: true }).click();
+  await expect(page).toHaveURL(/\/media$/);
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });

@@ -1,135 +1,118 @@
-// Styles the sticky site header and its responsive navigation states.
-@use "../../styles/mixins" as *;
+// Original branding and responsive menu in the mockup's divided navigation.
 @use "../../styles/variables" as v;
-
 .nav {
   position: sticky;
   top: 0;
   z-index: 10;
-  width: 100%;
-  background: var(--color-pure-white);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-divider);
+  background: var(--color-background);
+
 }
 
 .nav__inner {
-  width: min(var(--layout-max-width), 100%);
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 2.5rem);
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 .nav__brand {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 40px;
+  padding: 10px var(--page-gutter);
 }
 
 .nav__logo img {
-  display: block;
-  height: clamp(56px, 4vw, 72px);
+  height: 56px;
   width: auto;
 }
 
 .nav__toggle {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.3rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: none;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
   background: transparent;
+
 }
 
 .nav__toggle span {
-  width: 1.4rem;
+  width: 22px;
   height: 2px;
-  background: var(--color-primary-black);
+  background: var(--color-ink);
 }
 
 .nav__menu {
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  background: var(--color-pure-white);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0 clamp(1rem, 5vw, 2.5rem);
-  // border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  // box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease, padding 0.25s ease;
+  background: var(--color-background);
+
 }
 
 .nav__menu--open {
-  max-height: 320px;
-  padding: clamp(1rem, 4vw, 2rem) clamp(1rem, 5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
 }
 
-.nav__menu-link {
-  display: inline-flex;
+.nav__menu-link, .nav__cta {
+  display: flex;
+  align-items: center;
+  padding: 18px var(--page-gutter);
   font-family: v.$font-heading;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-primary-black);
-  transition: color 0.2s ease;
+
 }
 
-.nav__menu-link--active {
-  color: var(--color-accent-gold);
+.nav__menu-link:hover, .nav__menu-link:focus-visible, .nav__menu-link--active {
+  color: var(--color-accent-hover);
 }
 
 .nav__cta {
-  display: inline-flex;
-  justify-content: center;
-  padding: 0.65rem 1.5rem;
-  border-radius: 6px;
-  background: var(--color-accent-gold);
-  color: var(--color-pure-white);
+  background: var(--color-accent);
+  color: var(--color-background);
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.nav__cta:hover {
-  background: var(--color-accent-gold-dark);
+.nav__cta-arrow {
+  font-size: 1.25rem;
 }
 
-@include respond(md) {
+.nav__cta:hover, .nav__cta:focus-visible {
+  color: var(--color-cream);
+}
+
+// Full navigation needs more space than the previous tablet breakpoint provides.
+@media (min-width: 1024px) {
   .nav__inner {
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    gap: clamp(1rem, 4vw, 3rem);
   }
-
   .nav__brand {
-    flex: 0 0 auto;
-    justify-content: flex-start;
-    gap: 1.25rem;
+    flex-shrink: 0;
   }
-
   .nav__toggle {
     display: none;
   }
-
-  .nav__menu {
+  .nav__menu, .nav__menu--open {
+    display: flex;
     position: static;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 0;
-    padding: 0;
     width: auto;
-    max-height: none;
-    gap: 2.5rem;
-    box-shadow: none;
-    border: none;
+    flex-direction: row;
+
+  }
+  .nav__menu-link, .nav__cta {
+    padding: 20px clamp(14px, 1.8vw, 28px);
+
+
   }
 }

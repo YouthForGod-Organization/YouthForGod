@@ -1,161 +1,50 @@
-// Styles the landing route hero, promo video, and overview content sections.
-@use "sass:color";
+// Conference artwork, promo video and message.
 @use "../styles/variables" as *;
-
-$ink: #1a1a1a;
-$ink-weak: #444;
-$muted: #f5f5f5;
-$accent: #c09b3c;
-
-.yfg-hero {
-  position: relative;
-  isolation: isolate;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-@media (min-width: 1024px) {
-  .yfg-hero {
-    height: 94vh;
-  }
-}
-
-.yfg-hero__media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.yfg-hero__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.yfg-hero__cta {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: clamp(140px, 7vh, 84px);
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-}
-.yfg-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 999px;
-  padding: 0.9rem 2.75rem;
-  font-family: $font-heading;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.yfg-btn:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
-}
-
-.yfg-btn--primary {
-  background: $accent;
-  color: $ink;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-}
-
-.yfg-hero__cta .yfg-btn--primary {
-  animation: yfg-media-cta-jump 2.4s ease-in-out infinite;
-}
-
-.yfg-btn--primary:hover,
-.yfg-btn--primary:focus-visible {
-  background: color.adjust($accent, $lightness: -5%);
-  color: $ink;
-  transform: translateY(-2px);
-  box-shadow: 0 24px 46px rgba(0, 0, 0, 0.28);
-}
-
-@keyframes yfg-media-cta-jump {
-  0%,
-  70%,
-  100% {
-    transform: translateY(0);
-  }
-
-  78% {
-    transform: translateY(-9px);
-  }
-
-  86% {
-    transform: translateY(0);
-  }
-
-  93% {
-    transform: translateY(-4px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .yfg-hero__cta .yfg-btn--primary {
-    animation: none;
-  }
-}
-
 .yfg-container {
   width: min(var(--layout-max-width), 100%);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--page-gutter);
+}
+
+.yfg-hero__media {
+  display: block;
+
+  background: var(--color-background);
+}
+
+.yfg-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .yfg-video-section {
-  margin-top: clamp(32px, 4vw, 72px);
-  padding: clamp(32px, 6vw, 64px) 0;
+  padding: clamp(40px, 7vw, 104px) 0;
 }
 
 .yfg-video-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 35px 65px rgba(0, 0, 0, 0.18);
-  padding: clamp(8px, 2vw, 18px);
+  border: 1px solid var(--color-divider);
   position: relative;
-  overflow: hidden;
+
+  background: var(--color-ink);
 }
 
 .yfg-video-card__media {
-  width: 100%;
-  border: none;
-  border-radius: 12px;
-  aspect-ratio: 16 / 9;
   display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .yfg-video-card__overlay {
   position: absolute;
-  inset: clamp(8px, 2vw, 18px);
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35));
-  color: #fff;
-  font-family: $font-heading;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
-  border-radius: 12px;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
+  gap: 12px;
   pointer-events: none;
+  background: rgb(0 0 0 / 35%);
 }
 
 .yfg-video-card__overlay--hidden {
@@ -163,114 +52,72 @@ $accent: #c09b3c;
   visibility: hidden;
 }
 
-.yfg-video-card__overlay-text {
-  margin: 0;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  line-height: 1.4;
-  color: #fff;
+.yfg-video-card__overlay-logo {
+  width: auto;
+  height: clamp(54px, 10vw, 84px);
+  filter: brightness(0) invert(1);
 }
 
-.yfg-video-card__overlay-logo {
-  height: clamp(54px, 10vw, 84px);
-  width: auto;
-  // Force the logo to render white on the overlay while keeping depth
-  filter: invert(1) brightness(2) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+.yfg-video-card__overlay-text {
+  color: var(--color-background);
+  font-family: $font-heading;
+  letter-spacing: 0.12em;
 }
 
 .yfg-section {
-  padding: clamp(40px, 6vw, 72px) 0;
-  position: relative;
-  background: radial-gradient(
-      circle at 20% 20%,
-      #fff6e2 0,
-      rgba(255, 246, 226, 0.45) 30%,
-      transparent 55%
-    ),
-    radial-gradient(circle at 80% 0%, rgba(212, 175, 55, 0.12), transparent 35%),
-    #fffdf8;
+  border-top: 1px solid var(--color-divider);
+  padding: clamp(48px, 7vw, 104px) 0;
+  background: var(--color-cream);
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      90deg,
-      rgba(212, 175, 55, 0.2),
-      rgba(255, 255, 255, 0),
-      rgba(212, 175, 55, 0.2)
-    );
-    height: 4px;
-    z-index: 1;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #fff 100%);
-    z-index: 0;
-  }
 }
 
 .yfg-section__content {
-  position: relative;
   display: grid;
-  gap: clamp(16px, 3vw, 28px);
-  text-align: center;
-  z-index: 2;
+  gap: 32px;
 }
 
 .yfg-h2 {
-  font-family: $font-heading;
-  font-weight: 700;
-  margin: 0 0 12px;
-  text-align: center;
-  letter-spacing: 0.08em;
-
-  &::after {
-    content: "";
-    display: block;
-    margin: 10px auto 0;
-    width: 64px;
-    height: 3px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, transparent, $accent, transparent);
-  }
+  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  max-width: 16ch;
 }
 
 .yfg-lead {
-  max-width: 60ch;
-  color: $ink-weak;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1.6;
+  margin: 0;
+  line-height: 1.8;
+  max-width: 62ch;
 }
 
 .yfg-scripture {
-  margin: clamp(24px, 4vw, 40px) auto 0;
-  max-width: 48rem;
-  padding: clamp(24px, 4vw, 40px);
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  border-top: 1px solid var(--color-divider);
+  margin: 16px 0 0;
+  padding: 32px 0 0;
 
-  blockquote {
-    margin: 0 0 0.75rem;
-    font-family: $font-heading;
-    font-size: clamp(1.2rem, 3vw, 1.75rem);
-    font-weight: 600;
-    line-height: 1.5;
+}
+
+.yfg-scripture blockquote {
+  margin: 0 0 24px;
+  font-family: $font-heading;
+  font-size: clamp(1.3rem, 2.8vw, 2.5rem);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.yfg-scripture figcaption {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  color: var(--color-accent-hover);
+}
+
+@media (min-width: 768px) {
+  .yfg-section__content {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
   }
-
-  figcaption {
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: $ink-weak;
+  .yfg-scripture {
+  border-top: 1px solid var(--color-divider);
+    grid-column: 1 / -1;
   }
 }

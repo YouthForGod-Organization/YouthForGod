@@ -1,44 +1,15 @@
 // Showcases the featured speaker roster with names, roles, and church affiliations.
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import benImage from "../../assets/benCropped.webp";
-import neymanImage from "../../assets/neymanCropped.webp";
 import romanImage from "../../assets/roman.webp";
 import danielImage from "../../assets/DanielClark_Bio.webp";
-import stepaImage from "../../assets/stepa2.webp";
 import "./Speakers.scss";
 
 const speakers = [
-  {
-    name: "Benjamin Baljic",
-    title: "Pastor",
-    organization: "Independent Baptist Church",
-    image: benImage,
-  },
-  {
-    name: "Konstantin Neyman",
-    title: "Pastor",
-    organization: "Word of Truth Bible Church",
-    image: neymanImage,
-  },
-  {
-    name: "Roman Balatskiy",
-    title: "Youth Pastor",
-    organization: "Bible Baptist Church",
-    image: romanImage,
-  },
-  {
-    name: "Daniel Clark",
-    title: "Pastor",
-    organization: "Evangelical Bible Fellowship",
-    image: danielImage,
-  },
-  {
-    name: "Stepan Misiruk",
-    title: "Pastor",
-    organization: "Gospel Light Baptist Church",
-    image: stepaImage,
-  },
+  { name: "Roman Balatskiy", image: romanImage },
+  { name: "Daniel Clark", image: danielImage },
+  { name: "Ivan Dzyuba", image: undefined },
+  { name: "Andrey Sentsov", image: undefined },
 ];
 
 export function SpeakersPage() {
@@ -59,15 +30,22 @@ export function SpeakersPage() {
           {speakers.map((speaker) => (
             <article key={speaker.name} className="speakers__card">
               <div className="speakers__image-wrap">
-                <img src={speaker.image} alt={speaker.name} />
+                {speaker.image ? (
+                  <img src={speaker.image} alt={speaker.name} />
+                ) : (
+                  <div className="speakers__portrait-pending" aria-label={`Portrait of ${speaker.name} coming soon`}>
+                    <span aria-hidden="true">{speaker.name.split(" ").map((part) => part[0]).join("")}</span>
+                    <p>Portrait coming soon</p>
+                  </div>
+                )}
               </div>
               <div className="speakers__card-body">
                 <h3>{speaker.name}</h3>
-                <p className="speakers__title">{speaker.title}</p>
-                <p className="speakers__org">{speaker.organization}</p>
+                <p className="speakers__title">2027 Speaker</p>
               </div>
             </article>
           ))}
+          <p className="speakers__pending">One additional speaker will be announced. Daniel Clark will open Session I; remaining session assignments are to be announced.</p>
         </section>
       </main>
       <Footer />

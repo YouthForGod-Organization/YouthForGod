@@ -1,6 +1,6 @@
 // Defines shared base element styles, typography, and layout primitives.
 @use "./variables" as *;
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Fraunces:wght@600;700&family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap");
 
 * {
   box-sizing: border-box;
@@ -9,8 +9,8 @@
 body {
   margin: 0;
   font-family: $font-body;
-  background: var(--color-pure-white);
-  color: var(--color-charcoal);
+  background: var(--color-background);
+  color: var(--color-text);
   font-size: 16px;
   line-height: 1.6;
 }
@@ -18,7 +18,7 @@ body {
 .container {
   width: min(var(--layout-max-width), 100%);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--page-gutter);
 }
 
 h1,
@@ -29,7 +29,7 @@ h3,
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-primary-black);
+  color: var(--color-ink);
   margin: 0;
 }
 
@@ -38,7 +38,7 @@ a,
 li,
 button {
   font-family: $font-body;
-  color: var(--color-charcoal);
+  color: var(--color-text);
 }
 
 a {
@@ -54,6 +54,13 @@ img {
 button {
   font: inherit;
   cursor: pointer;
-  border: none;
+
   background: none;
+}
+
+:focus-visible { outline: 3px solid var(--color-accent-hover); outline-offset: 5px; }
+::selection { background: var(--color-accent); color: var(--color-background); }
+h1, h2, h3 { overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }

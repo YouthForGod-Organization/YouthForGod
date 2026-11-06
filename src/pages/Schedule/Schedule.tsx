@@ -1,33 +1,8 @@
 // Displays the current two-day conference schedule as grouped session cards.
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { conference, conferenceSchedule } from "../../data/conference";
 import "./Schedule.scss";
-
-const conferenceSchedule = {
-  friday: {
-    label: "Friday",
-    date: "May 22",
-    slots: [
-      { time: "8:00 AM", activity: "Registration" },
-      { time: "8:00 - 9:30 AM", activity: "Coffee Cart Open" },
-      { time: "10:00 AM", activity: "Session 1" },
-      { time: "1:00 PM", activity: "Lunch" },
-      { time: "3:00 PM", activity: "Session 2" },
-      { time: "4:30 PM", activity: "Q&A" },
-    ],
-  },
-  saturday: {
-    label: "Saturday",
-    date: "May 23",
-    slots: [
-      { time: "8:00 AM", activity: "Registration" },
-      { time: "8:00 - 9:30 AM", activity: "Coffee Cart Open" },
-      { time: "10:00 AM", activity: "Session 1" },
-      { time: "1:00 PM", activity: "Lunch" },
-      { time: "3:00 PM", activity: "Park / Dinner" },
-    ],
-  },
-};
 
 export function SchedulePage() {
   return (
@@ -35,7 +10,7 @@ export function SchedulePage() {
       <Header />
       <main className="schedule">
         <section className="schedule__hero">
-          <p className="schedule__eyebrow">May 22 – 23 · Sacramento</p>
+          <p className="schedule__eyebrow">{conference.dates} · Citrus Heights</p>
           <h1>Schedule</h1>
           <p className="schedule__lead">
             The schedule is crafted so that all participants can have a balanced
@@ -44,7 +19,7 @@ export function SchedulePage() {
         </section>
 
         <section className="schedule__cards">
-          {[conferenceSchedule.friday, conferenceSchedule.saturday].map(
+          {conferenceSchedule.map(
             (day) => (
               <article key={day.label} className="schedule__card">
                 <header className="schedule__card-header">
@@ -58,9 +33,9 @@ export function SchedulePage() {
                       className="schedule__slot"
                     >
                       <span className="schedule__slot-time">{slot.time}</span>
-                      <span className="schedule__slot-activity">
-                        {slot.activity}
-                      </span>
+                      <div className="schedule__slot-content">
+                        <p className="schedule__slot-activity">{slot.activity}</p>
+                      </div>
                     </li>
                   ))}
                 </ul>
