@@ -2,7 +2,7 @@
 
 Youth for God is a React single-page conference site for the 2027 “Living as the Light” conference, centered on Ephesians 5:8. The app currently ships the landing page and media archive by default, with schedule, speakers, FAQ, and registration pages held behind a conference-planning feature flag.
 
-## Stack
+## Stack.
 
 - React 19 with TypeScript
 - React Router for client-side routing
