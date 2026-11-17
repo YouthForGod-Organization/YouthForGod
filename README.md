@@ -79,7 +79,7 @@ npm run build
 
 For full-page desktop and mobile screenshots of each available route, run `YFG_SHOW_CONFERENCE_PAGES=true YFG_CAPTURE_SCREENSHOTS=true npm test -- --grep "redesigned pages"`. Images are written into the matching test output directories under `test-results/`. The responsive checks cover viewport overflow, original header/footer branding and mobile-menu navigation.
 
-The home hero artwork is `public/living-as-the-light-hero.jpg`, a 2400×1350 JPEG derived from the supplied “Living as the Light-2.png”. At widths below 768px, the hero uses `public/living-as-the-light-hero-mobile.jpg`, a 1080×1920 (9:16) JPEG derived from “Living as the Light-3.png”. At 768px and above, it uses the 16:9 landscape artwork. Both images display uncropped with descriptive alternative text; picture sources and HTML preloads use matching breakpoints. Current event copy follows the supplied 2027 PDF; the media archive and labeled promo remain from 2026.
+The home hero artwork is `public/living-as-the-light-hero.jpg`, a 2400×1349 JPEG derived from the supplied “Living as the Light-2 2.png” (the updated “Live as Light” design). At widths below 768px, the hero uses `public/living-as-the-light-hero-mobile.jpg`, a 1080×1920 (9:16) JPEG derived from “Living as the Light-3.png”. At 768px and above, it uses the 16:9 landscape artwork. Both images display uncropped with descriptive alternative text; picture sources and HTML preloads use matching breakpoints. Current event copy follows the supplied 2027 PDF; the media archive and labeled promo remain from 2026.
 
 ## Conference Content
 

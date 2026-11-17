@@ -35,9 +35,9 @@ export function Landing() {
             <img
               className="yfg-hero__image"
               src="/living-as-the-light-hero.jpg"
-              alt="Living as the Light — Ephesians 5:8. Youth for God, May 28–29, 2027."
+              alt="Youth for God Conference — Ephesians 5:8. May 28–29, 2027."
               width={2400}
-              height={1350}
+              height={1349}
               loading="eager"
               fetchPriority="high"
               decoding="async"

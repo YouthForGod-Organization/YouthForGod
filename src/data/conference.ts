@@ -52,7 +52,7 @@ export const conferenceSchedule: ConferenceDay[] = [
       { time: "7:00 AM", activity: "Registration" },
       {
         time: "9:00 AM",
-        activity: "Session II · Expose the works of Darkness",
+        activity: "Session II · Expose the Works of Darkness",
         session: {
           verse: "Ephesians 5:13",
           summary: "Light exposes darkness. As salt and light, Christians are called to holiness and sanctification through the work of the Spirit.",
@@ -61,7 +61,7 @@ export const conferenceSchedule: ConferenceDay[] = [
       },
       {
         time: "11:00 AM",
-        activity: "Session III · The best use of Time",
+        activity: "Session III · Making the Best Use of Time",
         session: {
           verse: "Ephesians 5:15–16",
           summary: "Use time wisely because the days are evil. Understanding the Lord’s will helps us live purposefully and carry out the good works He has prepared for us.",
@@ -71,7 +71,7 @@ export const conferenceSchedule: ConferenceDay[] = [
       { time: "12:30 PM", activity: "Lunch" },
       {
         time: "2:30 PM",
-        activity: "Session IV · Be filled with the Spirit",
+        activity: "Session IV · Be Filled with the Spirit",
         session: {
           verse: "Ephesians 5:18b",
           summary: "The Holy Spirit helps, teaches and comforts us. Being filled with the Spirit leads to gratitude, song and melody in our hearts to God.",
@@ -80,7 +80,7 @@ export const conferenceSchedule: ConferenceDay[] = [
       },
       {
         time: "4:30 PM",
-        activity: "Session V · Be imitators of God",
+        activity: "Session V · Be Imitators of God",
         session: {
           verse: "Ephesians 5:1",
           summary: "Reflect on Christ’s love and sacrifice, turn away from evil, and respond in repentance and renewed commitment to Him. Leave walking as children of light.",

@@ -18,10 +18,6 @@ const faqs: { question: string; answer: ReactNode }[] = [
     answer: "Living as the Light. The teaching theme, ‘You – a lit’L Christian?’, asks what it means to be light in the Lord and walk as children of light (Ephesians 5:8).",
   },
   {
-    question: "Who will be speaking?",
-    answer: "Roman Balatskiy, Daniel Clark, Ivan Dzyuba and Andrey Sentsov, with one additional speaker to be announced. Daniel Clark will teach Session I. The remaining session assignments are to be announced.",
-  },
-  {
     question: "How do I register, and what does it cost?",
     answer: <>Visit the <a href="/register">registration page</a> for the current 2027 registration form and pricing.</>,
   },
@@ -36,10 +32,6 @@ const faqs: { question: string; answer: ReactNode }[] = [
   {
     question: "Will food be provided?",
     answer: "The schedule includes Friday tea from 8:30 to 10:00 PM, Saturday lunch at 12:30 PM and supper at 6:00 PM. Contact the team for meal arrangements and dietary questions.",
-  },
-  {
-    question: "Are hotels provided?",
-    answer: "Please contact the team for 2027 lodging information.",
   },
   {
     question: "Who do I contact for additional questions?",

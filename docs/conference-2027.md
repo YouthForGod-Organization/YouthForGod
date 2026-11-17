@@ -1,6 +1,6 @@
 # Conference 2027
 
-Source: the user-supplied two-page `YouthForGod_2027.pdf`. Desktop artwork: `Living as the Light-2.png`; mobile artwork: `Living as the Light-3.png`. The website combines the artwork title, **Living as the Light**, with the PDF teaching theme, **You – a lit’L Christian?**, meaning “you are light in the Lord.” The main reference is Ephesians 5:8.
+Source: the user-supplied two-page `YouthForGod_2027.pdf`. Desktop artwork: `Living as the Light-2 2.png` (“Live as Light”); mobile artwork: `Living as the Light-3.png`. The website combines the artwork title, **Living as the Light**, with the PDF teaching theme, **You – a lit’L Christian?**, meaning “you are light in the Lord.” The main reference is Ephesians 5:8.
 
 ## Confirmed information
 
@@ -16,11 +16,11 @@ Source: the user-supplied two-page `YouthForGod_2027.pdf`. Desktop artwork: `Liv
 | Friday | 7:00 PM | Session I: Introduction | Ephesians 5:8 |
 | Friday | 8:30–10:00 PM | Tea | |
 | Saturday, May 29 | 7:00 AM | Registration | |
-| Saturday | 9:00 AM | Session II: Expose the works of Darkness | Ephesians 5:13 |
-| Saturday | 11:00 AM | Session III: The best use of Time | Ephesians 5:15–16 |
+| Saturday | 9:00 AM | Session II: Expose the Works of Darkness | Ephesians 5:13 |
+| Saturday | 11:00 AM | Session III: Making the Best Use of Time | Ephesians 5:15–16 |
 | Saturday | 12:30 PM | Lunch | |
-| Saturday | 2:30 PM | Session IV: Be filled with the Spirit | Ephesians 5:18b |
-| Saturday | 4:30 PM | Session V: Be imitators of God | Ephesians 5:1 |
+| Saturday | 2:30 PM | Session IV: Be Filled with the Spirit | Ephesians 5:18b |
+| Saturday | 4:30 PM | Session V: Be Imitators of God | Ephesians 5:1 |
 | Saturday | 6:00 PM | Supper | |
 | Saturday | 7:00–9:00 PM | Bonfire | |
 

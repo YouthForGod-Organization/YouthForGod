@@ -45,7 +45,7 @@ test.describe("Youth for God pages", () => {
     await page.goto(routes.landing);
 
     await expect(page.locator("#home.yfg-hero")).toBeVisible();
-    const artwork = page.getByRole("img", { name: "Living as the Light — Ephesians 5:8. Youth for God, May 28–29, 2027." });
+    const artwork = page.getByRole("img", { name: "Youth for God Conference — Ephesians 5:8. May 28–29, 2027." });
     await expect(artwork).toBeVisible();
     await expect.poll(() => artwork.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
     await expect.poll(() => artwork.evaluate((img: HTMLImageElement) => img.currentSrc)).toContain(
@@ -107,7 +107,7 @@ test.describe("Youth for God pages", () => {
     await expect(friday.getByText("Session I · Introduction", { exact: true })).toBeVisible();
     await expect(friday.getByText("8:30 – 10:00 PM")).toBeVisible();
     await expect(saturday.getByText("7:00 AM", { exact: true })).toBeVisible();
-    for (const title of ["Expose the works of Darkness", "The best use of Time", "Be filled with the Spirit", "Be imitators of God"]) {
+    for (const title of ["Expose the Works of Darkness", "Making the Best Use of Time", "Be Filled with the Spirit", "Be Imitators of God"]) {
       await expect(saturday.getByText(title, { exact: false })).toBeVisible();
     }
     await expect(saturday.getByText("12:30 PM", { exact: true })).toBeVisible();
