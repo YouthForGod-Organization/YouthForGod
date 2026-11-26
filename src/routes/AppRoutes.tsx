@@ -5,19 +5,14 @@ import { SchedulePage } from "../pages/Schedule/Schedule";
 import { MediaPage } from "../pages/Media/Media";
 import { FAQPage } from "../pages/FAQ/FAQ";
 import { RegistrationPage } from "../pages/Registration/Registration";
-import { showConferencePages } from "../config/featureFlags";
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      {showConferencePages && (
-        <>
-          <Route path="/schedule" element={<SchedulePage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-        </>
-      )}
+      <Route path="/schedule" element={<SchedulePage />} />
+      <Route path="/faq" element={<FAQPage />} />
+      <Route path="/register" element={<RegistrationPage />} />
       <Route path="/media" element={<MediaPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

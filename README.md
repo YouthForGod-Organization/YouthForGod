@@ -1,6 +1,6 @@
 # YouthForGod
 
-Youth for God is a React single-page conference site for the 2027 “Living as the Light” conference, centered on Ephesians 5:8. The app currently ships the landing page and media archive by default, with schedule, FAQ, and registration pages held behind a conference-planning feature flag. Speakers is temporarily hidden.
+Youth for God is a React single-page conference site for the 2027 “Living as the Light” conference, centered on Ephesians 5:8. The landing page, media archive, schedule, FAQ and registration pages are always available. Speakers is temporarily hidden.
 
 ## Stack.
 
@@ -14,29 +14,16 @@ Youth for God is a React single-page conference site for the 2027 “Living as t
 
 - `/` renders the landing page with 2027 hero artwork, event summary and the current English promo video.
 - `/media` renders the 2026 sermon and music video archive.
-- `/schedule` renders the Friday/Saturday schedule with times and session titles when `YFG_SHOW_CONFERENCE_PAGES=true`.
+- `/schedule` renders the Friday/Saturday schedule with times and session titles.
 - `/speakers` temporarily redirects to `/` in all builds and has no navigation or footer links. Its source and assets are preserved.
-- `/faq` renders current attendee guidance and support links when `YFG_SHOW_CONFERENCE_PAGES=true`.
-- `/register` renders 2027 dates and venue with the hosted registration iframe when `YFG_SHOW_CONFERENCE_PAGES=true`.
-- When `YFG_SHOW_CONFERENCE_PAGES` is not enabled, `/schedule`, `/speakers`, `/faq`, and `/register` redirect to `/`.
+- `/faq` renders current attendee guidance and support links.
+- `/register` renders 2027 dates and venue with the hosted registration iframe.
 
-## Conference Page Flag
+## Page Availability
 
-Conference-planning pages are controlled by a build-time flag, which is off by default. The current local setup enables schedule, FAQ and registration; Speakers remains hidden. To enable the schedule, FAQ, and registration routes for a future conference, set this environment variable at build time:
+Schedule, FAQ and Register are always linked in the desktop/mobile navigation and footer and support direct visits. No environment variable is needed to enable them. The former `YFG_SHOW_CONFERENCE_PAGES` flag has been removed from the app, build configuration and local environment; any stale hosting value is ignored and can be deleted. Deploy a new build to apply this change to a hosted site.
 
-```bash
-YFG_SHOW_CONFERENCE_PAGES=true npm run build
-```
-
-For local development, you can also add this to `.env`:
-
-```bash
-YFG_SHOW_CONFERENCE_PAGES=true
-```
-
-After changing `.env`, restart `npm start` or run a new build because webpack reads the flag when it starts. For hosting providers such as Netlify, set `YFG_SHOW_CONFERENCE_PAGES` to `true` in the site's environment variables and redeploy. Accepted true values are `true`, `1`, and `yes`.
-
-To restore Speakers later, re-add its import and route in `src/routes/AppRoutes.tsx`, restore its links in `src/components/common/NavBar.tsx` and `Footer.tsx` under the conference flag, and update the route/navigation tests. The page remains in `src/pages/Speakers/`.
+To restore Speakers later, re-add its import and route in `src/routes/AppRoutes.tsx`, restore its links in `src/components/common/NavBar.tsx` and `Footer.tsx`, and update the route/navigation tests. The page remains in `src/pages/Speakers/`.
 
 ## Project Layout
 
@@ -93,21 +80,20 @@ Run `npm test -- --grep 'Conference photo gallery|redesigned pages'` to check gr
 
 ## Visual Design
 
-The November 2026 redesign follows the supplied **Y4G Site v2** mockup: oversized Montserrat headings, Open Sans body copy, cream mastheads, selective thin dividers and square controls, gray-brown accents and natural-color speaker portraits and grayscale media imagery. Original logos, page ordering, full footer information and the conference feature flag remain in place. Current conference copy follows the 2027 PDF. Both schedule days stay visible; FAQ disclosures, media links and the hosted registration flow retain their existing behavior. The home page opens directly with the Living as the Light artwork; the previous introductory heading, date block and View Media CTA have been removed. Media remains available through the navigation and footer.
+The November 2026 redesign follows the supplied **Y4G Site v2** mockup: oversized Montserrat headings, Open Sans body copy, cream mastheads, selective thin dividers and square controls, gray-brown accents and natural-color speaker portraits and grayscale media imagery. Original logos, page ordering and full footer information remain in place. Current conference copy follows the 2027 PDF. Both schedule days stay visible; FAQ disclosures, media links and the hosted registration flow retain their existing behavior. The home page opens directly with the Living as the Light artwork; the previous introductory heading, date block and View Media CTA have been removed. Media remains available through the navigation and footer.
 
 Thin 1px warm-gray dividers separate the navigation, schedule day headings/rows, speaker rows and FAQ entries. Media cards, the promo video and the registration form have matching 1px frames. Additional lines separate interior mastheads, the home information/scripture blocks and footer copyright. Controls retain their existing styling. Media links have no underline. Keyboard-only focus indicators remain visible.
 
 Shared colors and spacing live in `src/styles/_variables.scss`. Interior mastheads use the `styles` mixin in `src/styles/_page-hero.scss`; each page imports it from its own stylesheet. Page-specific layouts remain in their component Sass files. Add mobile styles first and extend them with `min-width` queries. The full desktop navigation starts at 1024px so links do not crowd the logo on tablets. Below that breakpoint, a transparent, borderless 48px hamburger button with no visible text opens a full-screen white native dialog covering the page and navbar. It contains large link targets, a highlighted current page, a clear registration action and an icon-only close button. Selecting a link, pressing Escape or using the close button dismisses the menu. The dialog contains keyboard focus, locks background scrolling and restores focus to the hamburger on dismissal. Entering the desktop layout closes it. Navigation state is exposed through `aria-expanded` and `aria-controls`.
 
-Run `npm start` to preview locally. Validate both feature-flag states:
+Run `npm start` to preview locally. Validate all public pages:
 
 ```bash
-YFG_SHOW_CONFERENCE_PAGES=false npm test
-YFG_SHOW_CONFERENCE_PAGES=true npm test
+npm test
 npm run build
 ```
 
-For full-page desktop and mobile screenshots of each available route, run `YFG_SHOW_CONFERENCE_PAGES=true YFG_CAPTURE_SCREENSHOTS=true npm test -- --grep "redesigned pages"`. Images are written into the matching test output directories under `test-results/`. The responsive checks cover viewport overflow, original header/footer branding and mobile-menu navigation.
+For full-page desktop and mobile screenshots of each available route, run `YFG_CAPTURE_SCREENSHOTS=true npm test -- --grep "redesigned pages"`. Images are written into the matching test output directories under `test-results/`. The responsive checks cover viewport overflow, original header/footer branding and mobile-menu navigation.
 
 The home hero artwork is `public/living-as-the-light-hero.jpg`, a 2400×1349 JPEG derived from the supplied “Living as the Light-2 2.png” (the updated “Live as Light” design). At widths below 768px, the hero uses `public/living-as-the-light-hero-mobile.jpg`, a 1080×1920 (9:16) JPEG derived from “Living as the Light-3.png”. At 768px and above, it uses the 16:9 landscape artwork. Both images display uncropped with descriptive alternative text; picture sources and HTML preloads use matching breakpoints. Current event copy follows the supplied 2027 PDF; the media archive remains from 2026 and the home promo is the current English video.
 
