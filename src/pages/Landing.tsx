@@ -1,15 +1,28 @@
 // Presents the conference hero, promo media, and core event message on the home route.
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import promoVideoWebm from "../assets/Conferencepromo2.webm";
-import promoVideoMp4 from "../assets/Conferencepromo2.mp4";
-import updatedLogo2 from "../assets/updatedLogo2.png";
+import { PhotoGallery } from "../components/PhotoGallery";
+import promoVideoMp4 from "../assets/y4g-2027-promo.mp4";
+import { conference } from "../data/conference";
 import "./Landing.scss";
 
 export function Landing() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [playbackError, setPlaybackError] = useState(false);
+
+  async function playVideo() {
+    const video = videoRef.current;
+    if (!video) return;
+    setPlaybackError(false);
+    try {
+      await video.play();
+      video.focus();
+    } catch {
+      setPlaybackError(true);
+    }
+  }
   // Simple black poster to avoid showing a white flash before playback
   const blackPoster =
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' style='background:black'/%3E";
@@ -23,87 +36,85 @@ export function Landing() {
           id="home"
           className="yfg-hero"
           role="region"
-          aria-label="Solus Christus banner"
+          aria-label="Living as the Light banner"
         >
-          <picture className="yfg-hero__media" aria-hidden="true">
+          <picture className="yfg-hero__media">
             <source
-              media="(max-width: 1023px)"
-              srcSet="/mobileHeroImage.optimized.jpg"
-            />
-            <source
-              media="(min-width: 1024px)"
-              srcSet="/desktopHeroImage.optimized.jpg"
+              media="(max-width: 767px)"
+              srcSet="/living-as-the-light-hero-mobile.jpg"
+              width={1080}
+              height={1920}
             />
             <img
               className="yfg-hero__image"
-              src="/desktopHeroImage.optimized.jpg"
-              alt=""
+              src="/living-as-the-light-hero.jpg"
+              alt="Youth for God Conference — Ephesians 5:8. May 28–29, 2027."
+              width={2400}
+              height={1349}
               loading="eager"
               fetchPriority="high"
               decoding="async"
             />
           </picture>
-          <div className="yfg-container yfg-hero__cta">
-            <Link className="yfg-btn yfg-btn--primary" to="/media">
-              View Media
-            </Link>
-          </div>
         </section>
 
         <section
           id="promo"
           className="yfg-video-section"
-          aria-label="Promo video"
+          aria-label="2027 conference promo"
         >
           <div className="yfg-container">
             <div className="yfg-video-card">
-              <div
-                className={`yfg-video-card__overlay ${
-                  isVideoPlaying ? "yfg-video-card__overlay--hidden" : ""
-                }`}
-              >
-                <img
-                  className="yfg-video-card__overlay-logo"
-                  src={updatedLogo2}
-                  alt="Youth for God"
-                />
-                <p className="yfg-video-card__overlay-text">SOLUS CHRISTUS</p>
-              </div>
+              {!isVideoPlaying && (
+                <button
+                  className="yfg-video-card__play"
+                  type="button"
+                  aria-label="Play conference video"
+                  onClick={playVideo}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                  </svg>
+                </button>
+              )}
               <video
+                ref={videoRef}
+                tabIndex={0}
                 className="yfg-video-card__media"
                 controls
+                playsInline
+                preload="metadata"
                 poster={blackPoster}
                 aria-label="Youth for God promo video"
-                onPlay={() => setIsVideoPlaying(true)}
+                onPlay={() => {
+                  setIsVideoPlaying(true);
+                  setPlaybackError(false);
+                }}
               >
                 <source src={promoVideoMp4} type="video/mp4" />
-                <source src={promoVideoWebm} type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             </div>
+            {playbackError && (
+              <p role="alert">Unable to start the video. Please try the video controls.</p>
+            )}
           </div>
         </section>
 
         <section id="info" className="yfg-section">
           <div className="yfg-container yfg-section__content">
-            <h2 className="yfg-h2">Youth For God Conference 2026</h2>
-            <p className="yfg-lead">
-              There is only one way to the Father. There is only one door and
-              one narrow path. There is only one King and one Redeemer. Only One
-              can make sinners righteous before a holy God, and only One is
-              worthy to be proclaimed, followed, and glorified. This is the
-              message at the heart of <em>Solus Christus</em>: Christ alone as
-              the hope, salvation, and joy of every believer.
-            </p>
+            <h2 className="yfg-h2">Youth For God Conference {conference.year}</h2>
+            <div className="yfg-lead">
+              <p><strong>Living as the Light</strong> · {conference.dates}</p>
+              <p>{conference.location}</p>
+            </div>
             <figure className="yfg-scripture">
-              <blockquote>
-                “Jesus said to him, “I am the way, and the truth, and the life;
-                no one comes to the Father but through Me.”
-              </blockquote>
-              <figcaption>John 14:6</figcaption>
+              <blockquote>“You are light in the Lord.” Walk as children of light.</blockquote>
+              <figcaption>{conference.reference}</figcaption>
             </figure>
           </div>
         </section>
+        <PhotoGallery />
       </main>
 
       <Footer />

@@ -1,0 +1,138 @@
+@use "../styles/variables" as *;
+
+.photo-gallery {
+  width: 100%;
+  padding: clamp(32px, 5vw, 72px) 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.photo-gallery__intro {
+  margin-bottom: clamp(24px, 3vw, 40px);
+  text-align: center;
+}
+
+.photo-gallery__intro p {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+}
+
+.photo-gallery__title {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: none;
+}
+
+.photo-gallery__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+}
+
+@media (min-width: 768px) {
+  .photo-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.photo-gallery__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--color-surface);
+  cursor: zoom-in;
+}
+
+.photo-gallery__tile img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.photo-gallery__expand {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  background: rgba(18, 22, 15, 0.8);
+  pointer-events: none;
+}
+
+.photo-gallery__expand svg {
+  width: 20px;
+  height: 20px;
+}
+
+.photo-gallery__tile:hover .photo-gallery__expand {
+  background: var(--color-accent);
+}
+
+.photo-gallery__tile:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+.photo-gallery__dialog {
+  width: min(1100px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  padding: 16px;
+  border: 0;
+  color: #fff;
+  background: var(--color-darkest);
+}
+
+.photo-gallery__dialog::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.photo-gallery__viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.photo-gallery__close {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.photo-gallery__close:hover {
+  background: #fff;
+  color: var(--color-darkest);
+}
+
+.photo-gallery__close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.photo-gallery__viewer img {
+  width: 100%;
+  height: min(65dvh, 740px);
+  object-fit: contain;
+}
+
+.photo-gallery__viewer p {
+  margin: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+}

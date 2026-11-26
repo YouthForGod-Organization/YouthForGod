@@ -157,8 +157,7 @@ export function MediaPage() {
           <p className="media__eyebrow">Conference archive</p>
           <h1>2026 Conference Media</h1>
           <p className="media__lead">
-            Watch sermons and music videos from Youth for God Conference 2026,
-            gathered from the Bible Baptist Church YouTube channel.
+            Watch sermons and music videos from Youth for God Conference 2026.
           </p>
         </section>
 

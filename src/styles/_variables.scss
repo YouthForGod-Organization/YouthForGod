@@ -1,13 +1,24 @@
-// Shared color tokens, layout limits, and font stacks for the design system.
+// Shared colors sampled in spirit from the Living as the Light artwork.
 :root {
-  --color-primary-black: #1a1a1a;
-  --color-charcoal: #2e2e2e;
-  --color-pure-white: #ffffff;
-  --color-light-gray: #f5f5f5;
-  --color-accent-gold: #c09b3c;
-  --color-accent-gold-dark: #9f7f2f;
-  --layout-max-width: 1200px;
-  --radius-base: 14px;
+  --color-ink: #25291f;
+  --color-text: #454d40;
+  --color-background: #ffffff;
+  --color-cream: #fffbdd;
+  --color-neutral: #f5f4ed;
+  --color-surface: #f1eed7;
+  --color-sage: #e4e7d7;
+  --color-accent: #736738;
+  --color-accent-hover: #5b512d;
+  --color-accent-soft: #fffbdd;
+  --color-gray-yellow: #878063;
+  --color-blue: #8396ba;
+  --color-blue-muted: #8a96a8;
+  --color-dark: #303a32;
+  --color-darkest: #12160f;
+  --color-divider: #d9d8be;
+  --page-gutter: clamp(20px, 4vw, 64px);
+  --layout-max-width: 1440px;
+  --radius-base: 0px;
 }
 
 $font-heading: "Montserrat", "Helvetica Neue", sans-serif;

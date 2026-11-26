@@ -12,7 +12,10 @@ export default defineConfig({
   projects: [
     {
       name: 'Desktop Chrome',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: process.env.PLAYWRIGHT_CHROMIUM_CHANNEL || undefined,
+      },
     },
     {
       name: 'Mobile Safari',
