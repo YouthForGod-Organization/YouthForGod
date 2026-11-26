@@ -35,33 +35,36 @@
   aspect-ratio: 16 / 9;
 }
 
-.yfg-video-card__overlay {
+.yfg-video-card__play {
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  pointer-events: none;
-  background: rgb(0 0 0 / 35%);
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: clamp(64px, 9vw, 88px);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  background: #000;
 }
 
-.yfg-video-card__overlay--hidden {
-  opacity: 0;
-  visibility: hidden;
+.yfg-video-card__play:hover {
+  color: #000;
+  background: white;
 }
 
-.yfg-video-card__overlay-logo {
-  width: auto;
-  height: clamp(54px, 10vw, 84px);
-  filter: brightness(0) invert(1);
+.yfg-video-card__play:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 5px;
 }
 
-.yfg-video-card__overlay-text {
-  color: var(--color-background);
-  font-family: $font-heading;
-  letter-spacing: 0.12em;
+.yfg-video-card__play svg {
+  width: 50%;
+  height: 50%;
 }
 
 .yfg-section {
