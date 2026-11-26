@@ -137,6 +137,7 @@ test.describe("Youth for God pages", () => {
     await expect(header.getByRole("link", { name: /^Schedule$/i })).toHaveCount(expectedLinkCount);
     await expect(header.getByRole("link", { name: /^FAQ$/i })).toHaveCount(expectedLinkCount);
     await expect(header.getByRole("link", { name: /^Register$/i })).toHaveCount(expectedLinkCount);
+    if (isMobile) await page.getByRole("button", { name: "Close menu" }).click();
     await expect(footer.getByRole("link", { name: /^Speakers$/i })).toHaveCount(0);
     await expect(footer.getByRole("link", { name: /^Schedule$/i })).toHaveCount(expectedLinkCount);
     await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(expectedLinkCount);
@@ -390,7 +391,7 @@ test("redesigned pages preserve branding and fit the viewport", async ({ page },
 test("mobile navigation opens and closes after following a link", async ({ page, isMobile }) => {
   test.skip(!isMobile, "Mobile menu only");
   await page.goto("/");
-  const toggle = page.getByRole("button", { name: "Toggle menu" });
+  const toggle = page.locator("header .nav__toggle");
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await page.locator("header").getByRole("link", { name: "Media", exact: true }).click();
@@ -398,26 +399,33 @@ test("mobile navigation opens and closes after following a link", async ({ page,
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 
-test("mobile navigation has clear controls and dismisses with Escape or an outside tap", async ({ page, isMobile }, testInfo) => {
+test("mobile navigation fills the screen and closes with Escape or its close button", async ({ page, isMobile }, testInfo) => {
   test.skip(!isMobile, "Mobile menu only");
   await page.goto("/");
-  const toggle = page.getByRole("button", { name: "Toggle menu" });
-  await expect(toggle).toHaveText("Menu");
+  const toggle = page.locator("header .nav__toggle");
+  await expect(toggle).toHaveText("");
+  await expect(toggle).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+  await expect(toggle).toHaveCSS("border-top-width", "0px");
   await expect(toggle).toHaveAttribute("aria-controls", "primary-navigation");
   const toggleBounds = await toggle.boundingBox();
   expect(toggleBounds!.width).toBeGreaterThanOrEqual(44);
   expect(toggleBounds!.height).toBeGreaterThanOrEqual(44);
   await toggle.tap();
-  await expect(toggle).toHaveText("Close");
+  await expect(toggle).toHaveText("");
   const menu = page.getByRole("navigation", { name: "Primary navigation" });
   await expect(menu).toBeVisible();
-  const bounds = await menu.boundingBox();
-  expect(bounds!.x).toBeGreaterThan(0);
-  expect(bounds!.x + bounds!.width).toBeLessThan(page.viewportSize()!.width);
-  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(page.viewportSize()!.height);
+  const dialog = page.getByRole("dialog", { name: "Site navigation" });
+  await expect(dialog).toBeVisible();
+  const bounds = await dialog.boundingBox();
+  expect(bounds!.x).toBe(0);
+  expect(bounds!.y).toBe(0);
+  expect(bounds!.width).toBe(page.viewportSize()!.width);
+  expect(bounds!.height).toBe(page.viewportSize()!.height);
+  await expect(dialog.getByRole("button", { name: "Close menu" })).toBeFocused();
+  await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
   await expect(menu.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("aria-current", "page");
   if (process.env.YFG_CAPTURE_SCREENSHOTS === "true") {
-    await page.screenshot({ path: testInfo.outputPath("mobile-menu.png") });
+    await page.screenshot({ path: testInfo.outputPath("mobile-menu.png"), animations: "disabled" });
   }
   await menu.getByRole("link", { name: "Media", exact: true }).focus();
   await page.keyboard.press("Escape");
@@ -425,7 +433,9 @@ test("mobile navigation has clear controls and dismisses with Escape or an outsi
   await expect(toggle).toBeFocused();
   await expect(menu).not.toBeVisible();
   await toggle.tap();
-  await page.touchscreen.tap(2, bounds!.y + 20);
-  await expect(menu).not.toBeVisible();
-  await expect(toggle).toHaveText("Menu");
+  await dialog.getByRole("button", { name: "Close menu" }).tap();
+  await expect(dialog).not.toBeVisible();
+  await expect(toggle).toBeFocused();
+  await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
+  await expect(toggle).toHaveText("");
 });
