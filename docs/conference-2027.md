@@ -4,7 +4,7 @@ Source: the user-supplied two-page `YouthForGod_2027.pdf`. Desktop artwork: `Liv
 
 ## Temporary Speakers visibility
 
-The Speakers page is temporarily hidden from navigation and the footer. `/speakers` redirects home even when conference pages are enabled. Its component, styles, portraits and roster remain in the repository for later restoration; see README.md for the route/link restoration steps.
+The Speakers page is temporarily hidden from navigation and the footer. `/speakers` redirects home. The Speakers component, styles, portraits and roster remain in the repository for later restoration; see README.md for the route/link restoration steps. Schedule, FAQ and Register are always available without environment configuration.
 
 ## Confirmed information
 
@@ -59,4 +59,4 @@ See README.md for grid layout, accessibility, photo replacement and test command
 
 ## Validation
 
-Run `YFG_SHOW_CONFERENCE_PAGES=true npm test` to exercise current conference pages and archived media on desktop and mobile. Playwright builds the production bundle with `npm run build` before serving its test preview. Use `npm start` for manual preview when desired.
+Run `npm test` to exercise current conference pages and archived media on desktop and mobile. Playwright builds the production bundle with `npm run build` before serving its test preview. Use `npm start` for manual preview when desired.
