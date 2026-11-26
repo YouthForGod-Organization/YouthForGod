@@ -278,7 +278,7 @@ test.describe("Youth for God pages", () => {
   });
 });
 
-test("Conference photo gallery shows six equal photos in two columns", async ({ page }, testInfo) => {
+test("Conference photo gallery shows six equal photos in responsive columns", async ({ page }, testInfo) => {
   await page.goto("/");
   const gallery = page.getByRole("region", { name: "Conference photo gallery" });
   await gallery.scrollIntoViewIfNeeded();
@@ -302,17 +302,18 @@ test("Conference photo gallery shows six equal photos in two columns", async ({ 
     const box = image.getBoundingClientRect();
     return { x: box.x, y: box.y, width: box.width, height: box.height };
   }));
+  const columns = page.viewportSize()!.width < 768 ? 1 : 2;
   for (let index = 0; index < boxes.length; index++) {
     const box = boxes[index];
     expect(Math.abs(box.width - boxes[0].width)).toBeLessThan(1);
     expect(Math.abs(box.height - boxes[0].height)).toBeLessThan(1);
     expect(box.width / box.height).toBeCloseTo(4 / 3, 2);
-    expect(box.x).toBeCloseTo(boxes[index % 2].x, 0);
-    if (index % 2 === 1) {
+    expect(box.x).toBeCloseTo(boxes[index % columns].x, 0);
+    if (index % columns === 1) {
       expect(box.y).toBeCloseTo(boxes[index - 1].y, 0);
       expect(box.x).toBeGreaterThan(boxes[index - 1].x + boxes[index - 1].width);
     }
-    if (index >= 2) expect(box.y).toBeGreaterThan(boxes[index - 2].y + boxes[index - 2].height);
+    if (index >= columns) expect(box.y).toBeGreaterThan(boxes[index - columns].y + boxes[index - columns].height);
   }
   expect(await gallery.evaluate((element) => {
     const info = document.querySelector("#info")!;
@@ -395,4 +396,36 @@ test("mobile navigation opens and closes after following a link", async ({ page,
   await page.locator("header").getByRole("link", { name: "Media", exact: true }).click();
   await expect(page).toHaveURL(/\/media$/);
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
+});
+
+test("mobile navigation has clear controls and dismisses with Escape or an outside tap", async ({ page, isMobile }, testInfo) => {
+  test.skip(!isMobile, "Mobile menu only");
+  await page.goto("/");
+  const toggle = page.getByRole("button", { name: "Toggle menu" });
+  await expect(toggle).toHaveText("Menu");
+  await expect(toggle).toHaveAttribute("aria-controls", "primary-navigation");
+  const toggleBounds = await toggle.boundingBox();
+  expect(toggleBounds!.width).toBeGreaterThanOrEqual(44);
+  expect(toggleBounds!.height).toBeGreaterThanOrEqual(44);
+  await toggle.tap();
+  await expect(toggle).toHaveText("Close");
+  const menu = page.getByRole("navigation", { name: "Primary navigation" });
+  await expect(menu).toBeVisible();
+  const bounds = await menu.boundingBox();
+  expect(bounds!.x).toBeGreaterThan(0);
+  expect(bounds!.x + bounds!.width).toBeLessThan(page.viewportSize()!.width);
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(page.viewportSize()!.height);
+  await expect(menu.getByRole("link", { name: "Home", exact: true })).toHaveAttribute("aria-current", "page");
+  if (process.env.YFG_CAPTURE_SCREENSHOTS === "true") {
+    await page.screenshot({ path: testInfo.outputPath("mobile-menu.png") });
+  }
+  await menu.getByRole("link", { name: "Media", exact: true }).focus();
+  await page.keyboard.press("Escape");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(toggle).toBeFocused();
+  await expect(menu).not.toBeVisible();
+  await toggle.tap();
+  await page.touchscreen.tap(2, bounds!.y + 20);
+  await expect(menu).not.toBeVisible();
+  await expect(toggle).toHaveText("Menu");
 });

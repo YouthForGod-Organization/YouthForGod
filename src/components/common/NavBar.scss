@@ -29,28 +29,66 @@
 
 .nav__toggle {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  background: transparent;
-
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-divider);
+  background: var(--color-cream);
+  color: var(--color-ink);
 }
 
-.nav__toggle span {
+.nav__toggle-label {
+  width: 3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav__toggle-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav__toggle-icon span {
   width: 22px;
   height: 2px;
-  background: var(--color-ink);
+  background: currentColor;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav__toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .nav__menu {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
+  top: calc(100% + 8px);
+  left: var(--page-gutter);
+  right: var(--page-gutter);
+  padding: 12px;
+  gap: 4px;
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
+  border: 1px solid var(--color-divider);
+  box-shadow: 0 12px 28px rgb(18 22 15 / 16%);
   background: var(--color-background);
 
 }
@@ -63,9 +101,10 @@
 .nav__menu-link, .nav__cta {
   display: flex;
   align-items: center;
-  padding: 18px var(--page-gutter);
+  min-height: 48px;
+  padding: 14px 16px;
   font-family: v.$font-heading;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -74,6 +113,11 @@
 
 .nav__menu-link:hover, .nav__menu-link:focus-visible, .nav__menu-link--active {
   color: var(--color-accent-hover);
+  background: var(--color-cream);
+}
+
+.nav__menu-link:focus-visible, .nav__cta:focus-visible {
+  outline-offset: -3px;
 }
 
 .nav__cta {
@@ -108,11 +152,18 @@
     position: static;
     width: auto;
     flex-direction: row;
-
+    padding: 0;
+    gap: 0;
+    border: 0;
+    box-shadow: none;
+    max-height: none;
+    overflow: visible;
   }
   .nav__menu-link, .nav__cta {
     padding: 20px clamp(14px, 1.8vw, 28px);
-
-
+    font-size: 0.8rem;
+  }
+  .nav__menu-link:hover, .nav__menu-link:focus-visible, .nav__menu-link--active {
+    background: transparent;
   }
 }
