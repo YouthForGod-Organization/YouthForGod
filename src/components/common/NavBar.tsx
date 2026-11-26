@@ -2,18 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/updatedLogo2.png";
-import { showConferencePages } from "../../config/featureFlags";
 import "./NavBar.scss";
 
 const navLinks = [
   { label: "Home", to: "/", end: true },
-  ...(showConferencePages
-    ? [
-        { label: "Schedule", to: "/schedule" },
-      ]
-    : []),
+  { label: "Schedule", to: "/schedule" },
   { label: "Media", to: "/media" },
-  ...(showConferencePages ? [{ label: "FAQ", to: "/faq" }] : []),
+  { label: "FAQ", to: "/faq" },
 ];
 
 function NavigationLinks({ closeMenu }: { closeMenu: () => void }) {
@@ -30,11 +25,9 @@ function NavigationLinks({ closeMenu }: { closeMenu: () => void }) {
           {link.label}
         </NavLink>
       ))}
-      {showConferencePages && (
-        <Link className="nav__cta" to="/register" onClick={closeMenu}>
-          Register <span className="nav__cta-arrow" aria-hidden="true">↗</span>
-        </Link>
-      )}
+      <Link className="nav__cta" to="/register" onClick={closeMenu}>
+        Register <span className="nav__cta-arrow" aria-hidden="true">↗</span>
+      </Link>
     </>
   );
 }

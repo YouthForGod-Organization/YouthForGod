@@ -12,23 +12,11 @@ const routes = {
   registration: "/register",
 };
 
-const hiddenConferenceRoutes = [
-  routes.schedule,
-  routes.faq,
-  routes.registration,
-];
-
 const conferenceRouteHeadings = [
   { route: routes.schedule, heading: /^Schedule$/i },
   { route: routes.faq, heading: /Frequently Asked Questions/i },
   { route: routes.registration, heading: /Secure Your Spot/i },
 ];
-
-const showConferencePages = ["1", "true", "yes"].includes(
-  String(process.env.YFG_SHOW_CONFERENCE_PAGES || "").toLowerCase()
-);
-
-const conferenceOnlyTest = showConferencePages ? test : test.skip;
 
 test.describe("Youth for God pages", () => {
   test("landing page opens with artwork and retains promo media", async ({ page, isMobile }) => {
@@ -124,26 +112,25 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByRole("heading", { name: /2026 Conference Media/i })).toBeVisible();
   });
 
-  test("conference planning navigation follows the feature flag", async ({ page, isMobile }) => {
+  test("conference navigation is always available", async ({ page, isMobile }) => {
     await page.goto(routes.landing);
     if (isMobile) await page.getByRole("button", { name: "Toggle menu" }).click();
 
     const header = page.locator("header");
     const footer = page.locator("footer");
 
-    const expectedLinkCount = showConferencePages ? 1 : 0;
-
     await expect(header.getByRole("link", { name: /^Speakers$/i })).toHaveCount(0);
-    await expect(header.getByRole("link", { name: /^Schedule$/i })).toHaveCount(expectedLinkCount);
-    await expect(header.getByRole("link", { name: /^FAQ$/i })).toHaveCount(expectedLinkCount);
-    await expect(header.getByRole("link", { name: /^Register$/i })).toHaveCount(expectedLinkCount);
+    await expect(header.getByRole("link", { name: /^Schedule$/i })).toHaveCount(1);
+    await expect(header.getByRole("link", { name: /^FAQ$/i })).toHaveCount(1);
+    await expect(header.getByRole("link", { name: /^Register$/i })).toHaveCount(1);
     if (isMobile) await page.getByRole("button", { name: "Close menu" }).click();
     await expect(footer.getByRole("link", { name: /^Speakers$/i })).toHaveCount(0);
-    await expect(footer.getByRole("link", { name: /^Schedule$/i })).toHaveCount(expectedLinkCount);
-    await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(expectedLinkCount);
+    await expect(footer.getByRole("link", { name: /^Schedule$/i })).toHaveCount(1);
+    await expect(footer.getByRole("link", { name: /^FAQ$/i })).toHaveCount(1);
+    await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(1);
   });
 
-  conferenceOnlyTest("schedule page lists both conference days and key session times", async ({ page }) => {
+  test("schedule page lists both conference days and key session times", async ({ page }) => {
     await page.goto(routes.schedule);
 
     await expect(page.getByRole("heading", { name: /^Schedule$/i })).toBeVisible();
@@ -214,25 +201,16 @@ test.describe("Youth for God pages", () => {
     ).toHaveAttribute("href", "https://www.youtube.com/watch?v=hnFKywbVMAU");
   });
 
-  test("direct conference route visits follow the feature flag", async ({ page }) => {
-    if (showConferencePages) {
-      for (const { route, heading } of conferenceRouteHeadings) {
-        await page.goto(route);
+  test("direct conference route visits are always available", async ({ page }) => {
+    for (const { route, heading } of conferenceRouteHeadings) {
+      await page.goto(route);
 
-        await expect(page).toHaveURL(new RegExp(`${route}$`));
-        await expect(page.getByRole("heading", { name: heading })).toBeVisible();
-      }
-    } else {
-      for (const hiddenRoute of hiddenConferenceRoutes) {
-        await page.goto(hiddenRoute);
-
-        await expect(page).toHaveURL(/\/$/);
-        await expect(page.locator("#home.yfg-hero")).toBeVisible();
-      }
+      await expect(page).toHaveURL(new RegExp(`${route}$`));
+      await expect(page.getByRole("heading", { name: heading })).toBeVisible();
     }
   });
 
-  conferenceOnlyTest("FAQ page expands logistics guidance and exposes support links", async ({ page }) => {
+  test("FAQ page expands logistics guidance and exposes support links", async ({ page }) => {
     await page.goto(routes.faq);
 
     await expect(page.getByRole("heading", { name: /Frequently Asked Questions/i })).toBeVisible();
@@ -249,7 +227,7 @@ test.describe("Youth for God pages", () => {
     await expect(page.getByText(/same-day registration remains \$60|March 31st|Thursday, May 21/i)).toHaveCount(0);
   });
 
-  conferenceOnlyTest("registration page shows current event details", async ({ page }) => {
+  test("registration page shows current event details", async ({ page }) => {
     await page.goto(routes.registration, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: /Secure Your Spot/i })).toBeVisible();
     await expect(page.getByText("May 28 – 29, 2027", { exact: true })).toBeVisible();
@@ -265,9 +243,7 @@ test.describe("Youth for God pages", () => {
 
     await expect(footer.getByRole("link", { name: /^Home$/i })).toBeVisible();
     await expect(footer.getByRole("link", { name: /^Media$/i })).toBeVisible();
-    await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(
-      showConferencePages ? 1 : 0
-    );
+    await expect(footer.getByRole("link", { name: /^Register$/i })).toHaveCount(1);
     await expect(footer.getByRole("link", { name: /contact@youth4god.org/i })).toHaveAttribute(
       "href",
       "mailto:contact@youth4god.org"
@@ -370,7 +346,7 @@ test("Conference photo gallery opens full photos and returns focus on close", as
 
 
 test("redesigned pages preserve branding and fit the viewport", async ({ page }, testInfo) => {
-  const visibleRoutes = showConferencePages ? Object.values(routes) : ["/", "/media"];
+  const visibleRoutes = Object.values(routes);
   for (const route of visibleRoutes) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     await expect(page.locator("header img[alt='Youth for God']")).toBeVisible();
