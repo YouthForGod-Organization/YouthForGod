@@ -1,10 +1,9 @@
 // Legacy alternate homepage experiment retained for reference but not wired into routing.
 import { Link } from "react-router-dom";
+import promoVideoMp4 from "../../assets/y4g-2027-promo.mp4";
 import "./HomePage.scss";
 
-const VIDEO_POSTER =
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80";
-const VIDEO_SRC = "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4";
+const VIDEO_POSTER = "/living-as-the-light-hero.jpg";
 
 export function HomePage() {
   return (
@@ -32,9 +31,16 @@ export function HomePage() {
 
       <section className="home__promo" id="video">
         <div className="container">
-          <h2 className="home__section-title">Promo Video</h2>
-          <video className="home__promo-video" controls poster={VIDEO_POSTER}>
-            <source src={VIDEO_SRC} type="video/mp4" />
+          <h2 className="home__section-title">2027 Promo Video</h2>
+          <video
+            className="home__promo-video"
+            controls
+            playsInline
+            preload="metadata"
+            poster={VIDEO_POSTER}
+            aria-label="Youth for God promo video"
+          >
+            <source src={promoVideoMp4} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

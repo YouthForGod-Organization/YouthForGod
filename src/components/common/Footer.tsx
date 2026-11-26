@@ -8,7 +8,6 @@ const quickLinks = [
   { label: "Home", to: "/" },
   ...(showConferencePages
     ? [
-        { label: "Speakers", to: "/speakers" },
         { label: "Schedule", to: "/schedule" },
       ]
     : []),

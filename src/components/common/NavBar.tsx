@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Home", to: "/", end: true },
   ...(showConferencePages
     ? [
-        { label: "Speakers", to: "/speakers" },
         { label: "Schedule", to: "/schedule" },
       ]
     : []),

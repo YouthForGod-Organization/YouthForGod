@@ -1,15 +1,28 @@
 // Presents the conference hero, promo media, and core event message on the home route.
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import promoVideoWebm from "../assets/Conferencepromo2.webm";
-import promoVideoMp4 from "../assets/Conferencepromo2.mp4";
-import updatedLogo2 from "../assets/updatedLogo2.png";
+import { PhotoGallery } from "../components/PhotoGallery";
+import promoVideoMp4 from "../assets/y4g-2027-promo.mp4";
 import { conference } from "../data/conference";
 import "./Landing.scss";
 
 export function Landing() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [playbackError, setPlaybackError] = useState(false);
+
+  async function playVideo() {
+    const video = videoRef.current;
+    if (!video) return;
+    setPlaybackError(false);
+    try {
+      await video.play();
+      video.focus();
+    } catch {
+      setPlaybackError(true);
+    }
+  }
   // Simple black poster to avoid showing a white flash before playback
   const blackPoster =
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' style='background:black'/%3E";
@@ -48,34 +61,43 @@ export function Landing() {
         <section
           id="promo"
           className="yfg-video-section"
-          aria-label="2026 conference recap"
+          aria-label="2027 conference promo"
         >
           <div className="yfg-container">
             <div className="yfg-video-card">
-              <div
-                className={`yfg-video-card__overlay ${
-                  isVideoPlaying ? "yfg-video-card__overlay--hidden" : ""
-                }`}
-              >
-                <img
-                  className="yfg-video-card__overlay-logo"
-                  src={updatedLogo2}
-                  alt="Youth for God"
-                />
-                <p className="yfg-video-card__overlay-text">2026 · SOLUS CHRISTUS</p>
-              </div>
+              {!isVideoPlaying && (
+                <button
+                  className="yfg-video-card__play"
+                  type="button"
+                  aria-label="Play conference video"
+                  onClick={playVideo}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                  </svg>
+                </button>
+              )}
               <video
+                ref={videoRef}
+                tabIndex={0}
                 className="yfg-video-card__media"
                 controls
+                playsInline
+                preload="metadata"
                 poster={blackPoster}
                 aria-label="Youth for God promo video"
-                onPlay={() => setIsVideoPlaying(true)}
+                onPlay={() => {
+                  setIsVideoPlaying(true);
+                  setPlaybackError(false);
+                }}
               >
                 <source src={promoVideoMp4} type="video/mp4" />
-                <source src={promoVideoWebm} type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             </div>
+            {playbackError && (
+              <p role="alert">Unable to start the video. Please try the video controls.</p>
+            )}
           </div>
         </section>
 
@@ -92,6 +114,7 @@ export function Landing() {
             </figure>
           </div>
         </section>
+        <PhotoGallery />
       </main>
 
       <Footer />
